@@ -31,6 +31,7 @@ Client-server architecture is a computing model where tasks or workloads are div
 
 
 <h4>6. Disadvantages:</h4>
+
    - **Single Point of Failure:** If the server fails, it can disrupt services for multiple clients.
    - **Network Dependency:** Clients heavily rely on network connections; network issues can affect communication with the server.
    - **Load Balancing:** Proper load balancing is necessary to distribute client requests evenly among servers to avoid performance bottlenecks.
