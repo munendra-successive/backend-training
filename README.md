@@ -1,6 +1,7 @@
 # backend-training
 
 <h4>1. Update Package Lists: </h4>
+
    - sudo apt update <br/>
    This command updates the local database of available packages and their versions from the repositories.
 
