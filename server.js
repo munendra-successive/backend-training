@@ -1,15 +1,15 @@
-import cookieParser from "cookie-parser";
-import express from "express";
+const cookieParser = require("cookie-parser");
+const express = require("express");
 var app = express();
 app.use(cookieParser());
 
 app.get("/", function (req, res) {
-  res.cookie('username','monu')
-  res.cookie('isYoung','true',{
-    maxAge:900000, httpOnly:true
-  })
-  res.send("Cookies example")
-  console.log("Cookies:",req.cookies);
+  res.cookie({name:"Monu",isYoung:true,
+    maxAge: 900000,
+    httpOnly: true,
+  });
+  res.send("Cookies example");
+  console.log("Cookies:", req.cookies);
 });
 
 app.listen(8080, () => {
