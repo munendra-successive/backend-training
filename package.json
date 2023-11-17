@@ -8,8 +8,9 @@
   "description": "<h4>1. Update Package Lists: </h4>",
   "version": "1.0.0",
   "main": "index.js",
-  "type": "commonjs",
+  "type": "module",
   "scripts": {
+  
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

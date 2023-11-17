@@ -25,4 +25,4 @@ const mockData=[
   },
 ]
 
-module.exports=mockData
+export default mockData

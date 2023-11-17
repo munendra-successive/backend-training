@@ -1,5 +1,5 @@
-const express = require("express");
-const mockData = require("./mockData");
+import express from 'express'
+import mockData from './mockData.js';
 const app = express();
 
 app.get("/", (req, res) => {

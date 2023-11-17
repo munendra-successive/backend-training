@@ -1,5 +1,5 @@
-const cookieParser = require("cookie-parser");
-const express = require("express");
+import cookieParser from "cookie-parser";
+import express from 'express'
 var app = express();
 app.use(cookieParser());
 
