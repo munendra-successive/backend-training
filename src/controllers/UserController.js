@@ -1,4 +1,4 @@
-import fs from "fs";
+import jwt from "jsonwebtoken";
 
 const PostData = (req, res) => {
   const data = req.body;
@@ -21,5 +21,12 @@ const GetData = (req, res) => {
     },
   ]);
 };
+const secretKey = "myNameIsMunendraKumarKushwaha";
+const Login = (req, res) => {
+  const user = { id: 1, name: "monu" };
+  jwt.sign(user, secretKey, { expiresIn: "30m" }, (err, token) => {
+    res.json({ token });
+  });
+};
 
-export { GetData, PostData };
+export { GetData, PostData, Login };
