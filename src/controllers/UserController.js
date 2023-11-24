@@ -6,6 +6,7 @@ const PostData = (req, res) => {
 };
 
 const GetData = (req, res) => {
+  try{
   res.json([
     {
       id: 1,
@@ -19,7 +20,10 @@ const GetData = (req, res) => {
       username: "Antonette",
       email: "Shanna@melissa.tv",
     },
-  ]);
+  ]);}
+  catch(err){
+    next(err)
+  }
 };
 const secretKey = "myNameIsMunendraKumarKushwaha";
 const Login = (req, res) => {

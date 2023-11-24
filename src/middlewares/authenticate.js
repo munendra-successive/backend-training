@@ -11,7 +11,9 @@ const authenticate = (req, res, next) => {
     console.log(req.user);
     next();
   } catch (error) {
-    return res.status(401).json({ message: "unauthorized" });
+    error.status = 401;
+    error.message = "JWT expired, You are unauthorized";
+    next(error);
   }
 };
 
