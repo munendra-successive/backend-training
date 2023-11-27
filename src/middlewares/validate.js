@@ -1,11 +1,11 @@
 import userSchema from "../schema.js";
 const validate = (req, res, next) => {
-  const result = userSchema.validate(req.body);
-  if (result.error) {
-    console.log("Error Occured:", result.error.details[0].message);
-    res.send("ok");
+  const { error, value } = userSchema.validate(req.body);
+  if (error) {
+    console.log("Error Occured:", error.details[0].message);
+    res.status(400).send(`${error.details[0].message}`);
   } else {
-    console.log(result.value);
+    console.log(value);
     next();
   }
 };
