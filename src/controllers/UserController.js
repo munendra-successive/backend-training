@@ -1,11 +1,13 @@
-import fs from "fs";
-
 const PostData = (req, res) => {
   const data = req.body;
   console.log(data);
+  if (data) {
+    res.send("Successfull");
+  }
 };
 
 const GetData = (req, res) => {
+ 
   res.json([
     {
       id: 1,
