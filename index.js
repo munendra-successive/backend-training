@@ -34,7 +34,7 @@ async function run(ip) {
 }
 
 app.get("/", async (req, res) => {
-  const ip = "49.249.117.102";
+  const ip = "45.249.87.217";
   const response = await run(ip);
   console.log(response.addressRegion);
   res.send(response);
