@@ -1,10 +1,23 @@
 import Joi from "joi";
-const userSchema = Joi.object({
+
+// Login Schema
+const loginSchema = Joi.object({
   username: Joi.string().alphanum().min(3).max(30).required(),
-
   email: Joi.string().email().required(),
-
   password: Joi.string().pattern(new RegExp("^[a-zA-Z0-9]{3,30}$")).required(),
 });
 
-export default userSchema;
+// Register Schema
+const registerSchema = Joi.object({
+  firstname: Joi.string().alphanum(false).min(3).max(15).required(),
+  lastname: Joi.string().alphanum(false).min(3).max(15),
+  birth_year: Joi.number().integer().min(1900).max(2013),
+  email: Joi.string().email({
+    minDomainSegments: 2,
+    tlds: { allow: ["com", "in", "net"] },
+  }),
+  gender: Joi.string().min(3).max(10).required(),
+  password: Joi.string().pattern(new RegExp("^[a-zA-Z0-9]{3,30}$")).required(),
+});
+
+export { loginSchema, registerSchema };

@@ -1,5 +1,6 @@
 import { SuperfaceClient } from "@superfaceai/one-sdk";
 
+// Superface Client Api
 const sdk = new SuperfaceClient();
 
 async function run(ip) {
@@ -26,14 +27,16 @@ async function run(ip) {
   }
 }
 
-const geoLocation = async (req, res) => {
+
+const geoLocation = async (req, res, next) => {
   //   const ip = "45.249.87.217";
   //   const ip = "42.108.5.67";
   const ip = "45.249.87.217";
   const response = await run(ip);
-  if (response.addressRegion === "Delhi") {
-    return res.send(response);
+  if (response.addressRegion !== "Delhi") {
+    return res.status(403).send("User is not from the expected region");
   }
-  res.status(403);
+  console.log("user from expected region");
+  next();
 };
 export default geoLocation;
