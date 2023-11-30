@@ -1,11 +1,13 @@
 import jwt from "jsonwebtoken";
+import { NextFunction, Request,Response } from "express";
 
-const PostData = (req, res) => {
+const PostData = (req:Request, res:Response) => {
   const data = req.body;
   console.log(data);
+  res.send("Data Posted Successfully")
 };
 
-const GetData = (req, res) => {
+const GetData = (req:Request, res:Response,next:NextFunction) => {
   try{
   res.json([
     {
@@ -26,7 +28,7 @@ const GetData = (req, res) => {
   }
 };
 const secretKey = "myNameIsMunendraKumarKushwaha";
-const Login = (req, res) => {
+const Login = (req:Request, res:Response) => {
   const user = { id: 1, name: "monu" };
   jwt.sign(user, secretKey, { expiresIn: "30m" }, (err, token) => {
     res.json({ token });

@@ -1,8 +1,10 @@
-const asyncErrorHandler = (func) => {
-  return (req, res, next) => {
+import { NextFunction,Request,Response } from "express";
+
+const asyncErrorHandler = (func:Function) => {
+  return (req:Request, res:Response, next:NextFunction) => {
     func(req, res, next)
       .then(() => res.status(200).send("No Error"))
-      .catch((err) => next(err));
+      .catch((err:any) => next(err));
   };
 };
 
