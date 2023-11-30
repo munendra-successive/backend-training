@@ -14,7 +14,7 @@ router.route("/").get(authenticate, GetData);
 router.route("/").post(authenticate, PostData);
 
 // user/:id route
-router.route("/:query").get(queryValidator);
+router.route("/query").get(queryValidator);
 
 // user/login route
 router.route("/login").post(validate, Login);

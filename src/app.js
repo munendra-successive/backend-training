@@ -6,11 +6,6 @@ const app = express();
 
 app.use(express.json());
 
-// Base URL
-app.use("/", (req, res) => {
-  res.send("This is the base page");
-});
-
 // Routes
 app.use("/users", geoLocation, router);
 
