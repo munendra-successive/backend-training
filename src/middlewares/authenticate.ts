@@ -11,6 +11,7 @@ const authenticate = (req: Request, res: Response, next: NextFunction) => {
     req.body.user = decoded;
     console.log(req.body.user);
     next();
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
     error.status = 401;
     error.message = "JWT expired, You are unauthorized";

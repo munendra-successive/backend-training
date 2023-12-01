@@ -9,13 +9,14 @@ function loadUserRequests() {
   }
 }
 
-function saveUserRequests(data: Object) {
+function saveUserRequests(data: object) {
   fs.writeFileSync("userRequests.json", JSON.stringify(data), "utf8");
 }
 const userRequests = loadUserRequests();
 const rateLimit = (req: Request, res: Response, next: NextFunction) => {
   const limit = 5;
   const window = 60000;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const username: any = req.header("name");
   const currentTime = Date.now();
 

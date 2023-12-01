@@ -32,6 +32,7 @@ const geoLocation = async (req:Request, res:Response, next:NextFunction) => {
   //   const ip = "45.249.87.217";
   //   const ip = "42.108.5.67";
   const ip:string = "45.249.87.217";
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const response:any = await run(ip);
   if (response.addressRegion !== "Delhi") {
     return res.status(403).send("User is not from the expected region");
