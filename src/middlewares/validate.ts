@@ -1,18 +1,16 @@
-import userSchema from "../schema.js";
-import { NextFunction, Request,Response } from "express";
-const validate = (req:Request, res:Response, next:NextFunction) => {
-  const { error, value } = userSchema.validate(req.body);
-  if (error) {
-    console.log("Error Occured:", error.details[0].message);
-    return res.status(400).send({
-      status:false,
-      message: "Data is Not Valid",
-      error
-    })
-    
-  } else {
-    console.log(value);
+import { NextFunction, Request, Response } from "express";
+import { userConfig } from "../utils/config.js";
+const validate = (req: Request, res: Response, next: NextFunction) => {
+  try {
+    console.log(req.originalUrl);
+    const mySchema: any = userConfig(req.originalUrl);
+    const { error, value } = mySchema.validate(req.body, { abortEarly: false });
+    if (error) {
+      throw error;
+    }
     next();
+  } catch (error:any) {
+    return res.status(400).json(error.details);
   }
 };
 

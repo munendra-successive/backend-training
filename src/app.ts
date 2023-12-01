@@ -1,18 +1,32 @@
-import express, { NextFunction,Request, Response } from "express";
-import Error from './controllers/entities/Error'
+import express, { Request, Response } from "express";
+import dotenv from "dotenv";
 import { router, otherRouter } from "./routes/index.js";
+import {
+  errorHandler,
+  geoLocation,
+  Logger,
+  rateLimit,
+  addCustomHeader,
+} from "./middlewares/index.js";
+
 const app = express();
 
-app.use(express.json());
-// app.use("/", otherRouter);
-app.use("/users", router);
-// app.use("*", (req, res) => {
-//   res.status(404).send("URL not found");
-// });
+dotenv.config();
 
-app.use((err:Error, req:Request, res:Response, next:NextFunction) => {
-  res.status(401).send("Error Occured");
+app.use(express.json());
+
+app.use(geoLocation, Logger, rateLimit, addCustomHeader);
+
+app.use("/", otherRouter);
+
+app.use("/users", router);
+
+app.use("*", (req: Request, res: Response) => {
+  res.status(404).send("URL not found");
 });
-app.listen(8000, () => {
-  console.log("listening on port: 8000");
+
+app.use(errorHandler);
+
+app.listen(process.env.PORT, () => {
+  console.log(`listening on port: ${process.env.PORT}`);
 });
