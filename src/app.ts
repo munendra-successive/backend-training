@@ -1,32 +1,50 @@
-import express, { Request, Response } from "express";
+import express, { Application } from "express";
 import dotenv from "dotenv";
 import { router, otherRouter } from "./routes/index.js";
+import { Response } from "express";
+
 import {
-  errorHandler,
-  geoLocation,
-  Logger,
-  rateLimit,
-  addCustomHeader,
+  ErrorMiddlewareInstance,
+  RateLimitMiddlewareInstance,
+  OtherMiddlewareInstance,
 } from "./middlewares/index.js";
 
-const app = express();
+import { serverConfig } from "./config.js";
+class Server {
+  private app: Application;
+  constructor() {
+    dotenv.config();
+    this.app = express();
+    this.configure();
+    this.routes();
+  }
 
-dotenv.config();
+  configure() {
+    dotenv.config();
+    this.app.use(express.json());
+    this.app.use(OtherMiddlewareInstance.geoLocation);
+    this.app.use(OtherMiddlewareInstance.Logger);
+    this.app.use(RateLimitMiddlewareInstance.rateLimit);
+    this.app.use(OtherMiddlewareInstance.addCustomHeader);
+  }
 
-app.use(express.json());
+  routes() {
+    this.app.use("/users", router);
+    this.app.use("/async-error", otherRouter);
+    this.app.use("/health-check", (res: Response) => {
+      res.send("Health is ok").status(200);
+    });
 
-app.use(geoLocation, Logger, rateLimit, addCustomHeader);
+    this.app.use("*", (req, res) => {
+      res.status(404).send("URL not found");
+    });
+    this.app.use(ErrorMiddlewareInstance.errorHandler);
+  }
 
-app.use("/", otherRouter);
-
-app.use("/users", router);
-
-app.use("*", (req: Request, res: Response) => {
-  res.status(404).send("URL not found");
-});
-
-app.use(errorHandler);
-
-app.listen(process.env.PORT, () => {
-  console.log(`listening on port: ${process.env.PORT}`);
-});
+  public start() {
+    this.app.listen(serverConfig.PORT, () => {
+      console.log(`listening on port: ${serverConfig.PORT}`);
+    });
+  }
+}
+export default Server;

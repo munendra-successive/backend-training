@@ -1,14 +1,15 @@
 import express from "express";
-import { NextFunction, Request,Response } from "express";
-
+import { NextFunction, Request, Response } from "express";
+import { ErrorMiddlewareInstance } from "../middlewares/index.js";
 const otherRouter = express.Router();
-import { asyncErrorHandler, asyncThrowError } from "../middlewares/index.js";
-otherRouter.route("/async-error").get(
-  
+otherRouter.route("/").get(
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  asyncErrorHandler(async (req:Request, res:Response, next:NextFunction) => {
-    await asyncThrowError();
-  })
+  ErrorMiddlewareInstance.asyncErrorHandler(
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    async (req: Request, res: Response, next: NextFunction) => {
+      await ErrorMiddlewareInstance.asyncThrowError();
+    }
+  )
 );
 
 export default otherRouter;

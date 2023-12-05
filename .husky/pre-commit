@@ -2,4 +2,3 @@
 npm run eslint
 
 
-chmod ug+x .husky/*

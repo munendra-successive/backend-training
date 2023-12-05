@@ -1,28 +1,33 @@
 import express from "express";
 import { Response, Request } from "express";
-import { GetData, PostData, Login } from "../controllers/index.js";
-import {
-  validate,
-  authenticate,
-  validateParam,
-  queryValidator,
-} from "../middlewares/index.js";
+import { ValidateMiddlewareInstance } from "../middlewares/index.js";
+import { UserControllerInstance } from "../controllers/index.js";
 
 const router = express.Router();
 
-router.route("/").get(authenticate, GetData);
+router
+  .route("/")
+  .get(ValidateMiddlewareInstance.authenticate, UserControllerInstance.GetData);
 
-router.route("/").post(authenticate, PostData);
+router
+  .route("/")
+  .post(
+    ValidateMiddlewareInstance.authenticate,
+    UserControllerInstance.PostData
+  );
 
-router.route("/query").get(queryValidator);
+router.route("/query").get(ValidateMiddlewareInstance.queryValidator);
 
-router.route("/:id").get(validateParam);
+router.route("/:id").get(ValidateMiddlewareInstance.validateParam);
 
-router.route("/login").post(validate, Login);
+router
+  .route("/login")
+  .post(ValidateMiddlewareInstance.validate, UserControllerInstance.Login);
 
-
-router.route("/register").post(validate, (req: Request, res: Response) => {
-  res.send("Data Saved Successfully");
-});
+router
+  .route("/register")
+  .post(ValidateMiddlewareInstance.validate, (req: Request, res: Response) => {
+    res.send("Data Saved Successfully");
+  });
 
 export default router;

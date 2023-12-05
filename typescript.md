@@ -71,3 +71,127 @@ In TypeScript, variables can be explicitly typed or their types can be inferred 
     let message: string = "Hello, TypeScript!"; // Variable 'message' is explicitly typed as a string.
 
     let numberValue = 10; // TypeScript infers the type as 'number' based on the assigned value.
+
+<h2>Classes in TypeScript</h2>
+
+Classes in TypeScript allow you to define blueprints for objects, encapsulating both data and behavior. They offer a structured way to create reusable components and promote object-oriented programming principles.
+
+<h3>Class Declaration</h3>
+
+A class consists of properties and methods. It uses the class keyword followed by the class name. Here's an example:
+
+    class Person {
+        name: string;
+        age: number;
+
+        constructor(name: string, age: number) {
+            this.name = name;
+            this.age = age;
+        }
+
+        greet() {
+            return `Hello, my name is ${this.name} and I'm ${this.age} years old.`;
+        }
+        }
+
+        let person1 = new Person("Alice", 25);
+        console.log(person1.greet());
+
+In the above example:
+
+- Person is a class with properties name and age.
+- The constructor is a special method used for initializing object properties when an instance of the class is created using the new keyword.
+- greet() is a method within the class Person that returns a greeting message.
+
+<h3>Inheritance</h3>
+In TypeScript, classes support inheritance using the extends keyword. This allows a subclass (derived class) to inherit properties and methods from a superclass (base class)
+
+    class Employee extends Person {
+        role: string;
+
+        constructor(name: string, age: number, role: string) {
+            super(name, age); // Calling the constructor of the superclass
+            this.role = role;
+        }
+
+        getRole() {
+            return `I am an ${this.role}.`;
+        }
+    }
+
+        let employee1 = new Employee("Bob", 30, "Engineer");
+        console.log(employee1.greet());
+        console.log(employee1.getRole());
+
+In the above example:
+
+- Employee extends the Person class, inheriting its properties and methods.
+- The super() method calls the constructor of the superclass (Person).
+
+<h3>Access Modifiers</h3>
+TypeScript provides access modifiers like public, private, and protected to control the accessibility of class members.
+
+    class Animal {
+        private name: string;
+
+        constructor(name: string) {
+            this.name = name;
+        }
+
+        getName() {
+            return this.name; // Accessible only within the class
+        }
+        }
+
+Here, name is marked as private, making it accessible only within the Animal class. The getName() method can access the name property because it's within the same class.
+
+<h3>Interfaces in TypeScript</h3>
+Interfaces in TypeScript define the structure of an object and its types. They provide a way to define contracts within your codebase.
+
+<h3>Interface Declaration</h3>
+
+An interface declares the shape that an object must adhere to, specifying properties, methods, and their types.
+
+    interface Shape {
+        color: string;
+        area(): number;
+        }
+
+        class Circle implements Shape {
+        color: string;
+        radius: number;
+
+        constructor(color: string, radius: number) {
+            this.color = color;
+            this.radius = radius;
+        }
+
+        area() {
+            return Math.PI * this.radius ** 2;
+        }
+        }
+
+        let circle = new Circle("red", 5);
+        console.log(circle.area());
+
+Here, the Shape interface specifies that any object implementing it must have a color property of type string and an area() method that returns a number.
+
+<h3>Extending Interfaces</h3>
+Interfaces can extend other interfaces to inherit their members, allowing for composition and reusability.
+
+    interface Person {
+        name: string;
+        age: number;
+        }
+
+        interface Employee extends Person {
+        role: string;
+        }
+
+        let employee: Employee = {
+        name: "Alice",
+        age: 25,
+        role: "Manager",
+        };
+
+The Employee interface extends the Person interface, inheriting the name and age properties while adding its own role property.
