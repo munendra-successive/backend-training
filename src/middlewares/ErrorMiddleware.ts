@@ -1,8 +1,12 @@
 import { Response, Request, NextFunction } from "express";
+type AsyncRequestHandler = (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => Promise<unknown>;
 
 class ErrorMiddleware {
-  // eslint-disable-next-line @typescript-eslint/ban-types
-  public  asyncErrorHandler(func: Function) {
+  public asyncErrorHandler(func: AsyncRequestHandler) {
     return (req: Request, res: Response, next: NextFunction) => {
       func(req, res, next)
         .then(() => res.status(200).send("No Error"))
@@ -11,7 +15,7 @@ class ErrorMiddleware {
     };
   }
 
-  public  asyncThrowError() {
+  public asyncThrowError() {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     return new Promise((resolve, reject) => {
       setTimeout(() => {
@@ -21,8 +25,12 @@ class ErrorMiddleware {
     });
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-explicit-any
-  public  errorHandler(err: any, req: Request, res: Response, next: NextFunction) {
+  public errorHandler(
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    err: any,
+    req: Request,
+    res: Response
+  ) {
     // const { status, message } = err;
     const status = err.status || 401;
     const message = err.message || err;

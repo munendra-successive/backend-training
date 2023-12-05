@@ -44,7 +44,6 @@ class OtherMiddleware {
     //   const ip = "45.249.87.217";
     //   const ip = "42.108.5.67";
     const ip: string = "45.249.87.217";
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     try {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const response: any = await this.run(ip);
