@@ -1,8 +1,12 @@
 import { Response, Request, NextFunction } from "express";
+type AsyncRequestHandler = (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => Promise<unknown>;
 
 class ErrorMiddleware {
-  // eslint-disable-next-line @typescript-eslint/ban-types
-  public  asyncErrorHandler(func: Function) {
+  public  asyncErrorHandler(func:AsyncRequestHandler) {
     return (req: Request, res: Response, next: NextFunction) => {
       func(req, res, next)
         .then(() => res.status(200).send("No Error"))

@@ -1,8 +1,9 @@
 import { Response, Request, NextFunction } from "express";
-import jwt from "jsonwebtoken";
+import jwt, { JwtPayload } from "jsonwebtoken";
 import httperror from "http-errors";
-
 import { userConfig } from "../utils/config.js";
+import { Schema } from "joi";
+
 class ValidateMiddleware {
   secretKey: string;
   constructor() {
@@ -12,11 +13,12 @@ class ValidateMiddleware {
   public validate(req: Request, res: Response, next: NextFunction) {
     try {
       console.log(req.originalUrl);
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const mySchema: any = userConfig(req.originalUrl);
-      const { error } = mySchema.validate(req.body, { abortEarly: false });
-      if (error) {
-        throw error;
+      const mySchema: Schema | undefined = userConfig(req.originalUrl);
+      if (mySchema) {
+        const { error } = mySchema.validate(req.body, { abortEarly: false });
+        if (error) {
+          throw error;
+        }
       }
       next();
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -31,8 +33,7 @@ class ValidateMiddleware {
       return res.status(401).json({ message: "unauthorized" });
     }
     try {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const decoded: any = jwt.verify(token, this.secretKey);
+      const decoded: string | JwtPayload = jwt.verify(token, this.secretKey);
       req.body.user = decoded;
       console.log(req.body.user);
       next();
@@ -53,9 +54,8 @@ class ValidateMiddleware {
   }
 
   public queryValidator(req: Request, res: Response, next: NextFunction) {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const query: any = req.query.age;
-    if (!isNaN(query)) {
+    const query: string = req.query.age as string;
+    if (!isNaN(Number(query))) {
       res.send("Is a number");
       next();
     } else {
