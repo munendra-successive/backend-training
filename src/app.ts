@@ -6,6 +6,7 @@ import { Response } from "express";
 
 import {
   ErrorMiddlewareInstance,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   RateLimitMiddlewareInstance,
   OtherMiddlewareInstance,
 } from "./middlewares/index.js";
