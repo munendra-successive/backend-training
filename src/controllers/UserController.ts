@@ -1,8 +1,12 @@
 import jwt from "jsonwebtoken";
 import { NextFunction, Request, Response } from "express";
-
+import UserServiceInstance from "../services/UserService";
+import CountryServiceInstance from "../services/CountryService";
 class UserController {
-  private secretKey = "myNameIsMunendraKumarKushwaha";
+  private secretKey: string;
+  constructor() {
+    this.secretKey = "myNameIsMunendraKumarKushwaha";
+  }
 
   public PostData(req: Request, res: Response) {
     const data = req.body;
@@ -40,6 +44,19 @@ class UserController {
         res.json({ token });
       }
     });
+  };
+
+  public addCountry = async (req: Request, res: Response) => {
+    const data = req.body;
+    const response = await CountryServiceInstance.addCountries(data);
+    await CountryServiceInstance.findCountry();
+    res.json({ "Your data": response });
+  };
+
+  public addUser = async (req: Request, res: Response) => {
+    const data = req.body;
+    const response = await UserServiceInstance.addUser(data);
+    res.json({ "Data is": response });
   };
 }
 export default new UserController();

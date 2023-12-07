@@ -1,9 +1,5 @@
-import mongoose, { Document, Schema, Model } from "mongoose";
-
-interface ICountry extends Document {
-  CountryName: string;
-  PlayersName: string[];
-}
+import mongoose, { Schema, Model } from "mongoose";
+import ICountry from "../repositories/interface/ICountry";
 
 const CountrySchema = new Schema<ICountry>({
   CountryName: { type: String, required: true },
@@ -15,4 +11,4 @@ const CountryModel: Model<ICountry> = mongoose.model<ICountry>(
   CountrySchema
 );
 
-export { ICountry, CountryModel };
+export { CountryModel };

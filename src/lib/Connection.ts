@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { CountryModel } from "../models/Countries.js";
+import { CountryModel } from "../models/CountriesSchema.js";
 import countriesData from "./seedData.js";
 
 class Connection {
@@ -9,7 +9,6 @@ class Connection {
     try {
       await mongoose.connect(this.URI);
       console.log("Connection successful");
-      this.seedCountries();
     } catch (error) {
       console.log(error);
       console.error("Database Connection Failed");

@@ -20,6 +20,12 @@ router.route("/query").get(ValidateMiddlewareInstance.queryValidator);
 
 router.route("/:id").get(ValidateMiddlewareInstance.validateParam);
 
+router.route("/country").post(UserControllerInstance.addCountry);
+
+router
+  .route("/create")
+  .post(ValidateMiddlewareInstance.validate, UserControllerInstance.addUser);
+
 router
   .route("/login")
   .post(ValidateMiddlewareInstance.validate, UserControllerInstance.Login);

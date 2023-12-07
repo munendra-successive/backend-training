@@ -12,7 +12,9 @@ class RateLimiter {
     this.window = 60000;
   }
 
-  private loadUserRequests(): { [key: string]: { timestamp: number; count: number } } {
+  private loadUserRequests(): {
+    [key: string]: { timestamp: number; count: number };
+  } {
     try {
       const data = fs.readFileSync("userRequests.json", "utf8");
       return JSON.parse(data);

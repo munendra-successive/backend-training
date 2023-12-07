@@ -1,5 +1,6 @@
 import express, { Application } from "express";
 import dotenv from "dotenv";
+import ConnectionInstance from "./lib/Connection.js";
 import { router, otherRouter } from "./routes/index.js";
 import { Response } from "express";
 
@@ -20,11 +21,12 @@ class Server {
   }
 
   configure() {
+    ConnectionInstance.connectDb();
     dotenv.config();
     this.app.use(express.json());
     this.app.use(OtherMiddlewareInstance.geoLocation);
     this.app.use(OtherMiddlewareInstance.Logger);
-    this.app.use(RateLimitMiddlewareInstance.rateLimit);
+    // this.app.use(RateLimitMiddlewareInstance.rateLimit);
     this.app.use(OtherMiddlewareInstance.addCustomHeader);
   }
 

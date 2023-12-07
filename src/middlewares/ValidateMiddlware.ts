@@ -1,19 +1,22 @@
 import { Response, Request, NextFunction } from "express";
 import jwt, { JwtPayload } from "jsonwebtoken";
 import httperror from "http-errors";
-import { userConfig } from "../utils/config.js";
+import JoiSchemaInstance from "../schemas/JoiSchema";
 import { Schema } from "joi";
+import { serverConfig } from "../config.js";
 
 class ValidateMiddleware {
   secretKey: string;
   constructor() {
-    this.secretKey = "myNameIsMunendraKumarKushwaha";
+    this.secretKey = serverConfig.JWT_SECRET;
   }
 
   public validate(req: Request, res: Response, next: NextFunction) {
     try {
       console.log(req.originalUrl);
-      const mySchema: Schema | undefined = userConfig(req.originalUrl);
+      const mySchema: Schema | undefined = JoiSchemaInstance.userConfig(
+        req.originalUrl
+      );
       if (mySchema) {
         const { error } = mySchema.validate(req.body, { abortEarly: false });
         if (error) {
