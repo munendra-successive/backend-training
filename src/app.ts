@@ -1,6 +1,7 @@
 import express, { Application } from "express";
 import dotenv from "dotenv";
 import ConnectionInstance from "./lib/Connection.js";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { router, otherRouter } from "./routes/index.js";
 import { Response } from "express";
 import userRouter from "./modules/users/route.js";
