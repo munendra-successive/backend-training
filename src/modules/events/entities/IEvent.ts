@@ -1,6 +1,5 @@
-import { Date, Document } from "mongoose";
+import { Document } from "mongoose";
 import ILocation from "./ILocation";
-
 export default interface IEvent extends Document {
   name: string;
   location: ILocation;
@@ -8,7 +7,8 @@ export default interface IEvent extends Document {
   startDate: Date;
   endDate: Date;
   category: string;
-  oragnizerInfo: string;
+  organizerInfo: string;
   type: string;
   status: string;
+  createdAt: string;
 }

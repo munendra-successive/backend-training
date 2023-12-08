@@ -5,6 +5,9 @@ import UserModel from "../models/UsersSchema";
 import HeroRepository from "../repositories/HeroRepository";
 
 class Service {
+  login() {
+      throw new Error("Method not implemented.");
+  }
   private countryRepoInstance: HeroRepository<ICountry>;
   private userRepoInstance: HeroRepository<IUser>;
   constructor() {

@@ -3,6 +3,8 @@ import dotenv from "dotenv";
 import ConnectionInstance from "./lib/Connection.js";
 import { router, otherRouter } from "./routes/index.js";
 import { Response } from "express";
+import userRouter from "./modules/users/route.js";
+import eventRouter from "./modules/events/route.js";
 
 import {
   ErrorMiddlewareInstance,
@@ -32,7 +34,8 @@ class Server {
   }
 
   routes() {
-    this.app.use("/users", router);
+    this.app.use("/users", userRouter);
+    this.app.use("/events", eventRouter);
     this.app.use("/async-error", otherRouter);
     this.app.use("/health-check", (res: Response) => {
       res.send("Health is ok").status(200);
