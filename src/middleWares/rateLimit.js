@@ -1,17 +1,17 @@
 import fs from "fs";
 
-function loadUserRequests() {
+const loadUserRequests = () => {
   try {
     const data = fs.readFileSync("userRequests.json", "utf8");
     return JSON.parse(data);
   } catch (err) {
     return {};
   }
-}
+};
 
-function saveUserRequests(data) {
+const saveUserRequests = (data) => {
   fs.writeFileSync("userRequests.json", JSON.stringify(data), "utf8");
-}
+};
 const userRequests = loadUserRequests();
 const rateLimit = (req, res, next) => {
   const limit = 5;

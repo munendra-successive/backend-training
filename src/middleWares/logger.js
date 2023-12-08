@@ -1,4 +1,4 @@
-const Logger = (req, res, next) => {
+const logger = (req, res, next) => {
   console.log(
     `Method is ${req.method}, Urls is ${
       req.url
@@ -7,4 +7,4 @@ const Logger = (req, res, next) => {
   next();
 };
 
-export default Logger;
+export default logger;
