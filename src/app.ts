@@ -1,18 +1,14 @@
 import express, { Application } from "express";
 import dotenv from "dotenv";
-import ConnectionInstance from "./lib/Connection.js";
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { router, otherRouter } from "./routes/index.js";
+import { Connection as ConnectionInstance } from "./lib";
 import { Response } from "express";
-import userRouter from "./modules/users/route.js";
-import eventRouter from "./modules/events/route.js";
+import { router as userRouter } from "./modules/users";
+import { router as eventRouter } from "./modules/events";
 
 import {
   ErrorMiddlewareInstance,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  RateLimitMiddlewareInstance,
   OtherMiddlewareInstance,
-} from "./middlewares/index.js";
+} from "./middlewares";
 
 import { serverConfig } from "./config.js";
 class Server {
@@ -30,14 +26,12 @@ class Server {
     this.app.use(express.json());
     this.app.use(OtherMiddlewareInstance.geoLocation);
     this.app.use(OtherMiddlewareInstance.Logger);
-    // this.app.use(RateLimitMiddlewareInstance.rateLimit);
     this.app.use(OtherMiddlewareInstance.addCustomHeader);
   }
 
   routes() {
     this.app.use("/users", userRouter);
     this.app.use("/events", eventRouter);
-    this.app.use("/async-error", otherRouter);
     this.app.use("/health-check", (res: Response) => {
       res.send("Health is ok").status(200);
     });

@@ -1,6 +1,5 @@
 import { Schema } from "mongoose";
-import IEvent from "../entities/IEvent";
-import ILocation from "../entities/ILocation";
+import { IEvent, ILocation } from "../entities";
 
 const locationSchema = new Schema<ILocation>({
   street: { type: String, required: true },
@@ -25,7 +24,7 @@ const EventSchema = new Schema<IEvent>({
 
 // Pre-save hook to ensure startDate is before endDate
 EventSchema.pre<IEvent>("save", function (next) {
-  if (this.startDate >= this.endDate) {
+  if (this.startDate > this.endDate) {
     next(new Error("Start date must be before the end date."));
   } else {
     next();
@@ -34,7 +33,7 @@ EventSchema.pre<IEvent>("save", function (next) {
 
 // Pre-save hook to ensure endDate is after startDate
 EventSchema.pre<IEvent>("save", function (next) {
-  if (this.endDate <= this.startDate) {
+  if (this.endDate < this.startDate) {
     next(new Error("End date must be after the start date."));
   } else {
     next();

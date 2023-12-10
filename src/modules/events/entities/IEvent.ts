@@ -1,5 +1,5 @@
 import { Document } from "mongoose";
-import ILocation from "./ILocation";
+import { ILocation } from "../entities/index.js";
 export default interface IEvent extends Document {
   name: string;
   location: ILocation;

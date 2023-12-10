@@ -1,35 +1,27 @@
-import { UserModel } from "./model";
-import IUser from "../entities/IUser";
+import { UserModel } from ".";
+import { IUser, IQueryName } from "../entities";
 import mongoose from "mongoose";
 import bcrypt from "bcrypt";
+import { BaseRepository } from "../../../lib/index.js";
 
-class Repository {
+class Repository extends BaseRepository<IUser> {
   private userModel: mongoose.Model<IUser>;
   constructor() {
+    super(UserModel);
     this.userModel = UserModel;
   }
 
-  public async findByLoginData(email: string) {
-    try {
-      return await this.userModel.findOne({ email: email });
-    } catch (error) {
-      console.log("Login error in repository");
-    }
+  public async deleteByName(name: IQueryName) {
+    return await this.userModel.deleteOne(name);
   }
 
-  async register(regData: IUser) {
-    try {
-      const hashPassword = String(await bcrypt.hash(regData.password, 10));
-      const newUser = {
-        ...regData,
-        password: hashPassword,
-      };
-      const getUser = await this.userModel.create(newUser);
-      console.log("Data Saved Successfully");
-      return getUser;
-    } catch (error) {
-      console.log("Error in register repository ", error);
-    }
+  public async register(regData: IUser) {
+    const hashPassword = await bcrypt.hash(regData.password, 10);
+    const newUser = {
+      ...regData,
+      password: hashPassword,
+    };
+    return await this.userModel.create(newUser);
   }
 }
 export default new Repository();

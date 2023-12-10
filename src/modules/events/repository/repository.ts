@@ -1,22 +1,23 @@
 import IEvent from "../entities/IEvent";
+import IQueryStatus from "../entities/IQueryStatus";
 import { EventModel } from "./model";
+import BaseRepository from "../../../lib/base/baseRepository";
 import mongoose from "mongoose";
 
-class Repository {
+class Repository extends BaseRepository<IEvent> {
   private eventModel: mongoose.Model<IEvent>;
 
   constructor() {
+    super(EventModel);
     this.eventModel = EventModel;
   }
 
-  public async addEvent(eventData: IEvent) {
-    try {
-      const getData = await this.eventModel.create(eventData);
-      console.log("Event Added Successfully");
-      return getData;
-    } catch (error) {
-      console.log("Error in repo in adding event", error);
-    }
+  async getLimit(limit: number, skip: number) {
+    return await this.eventModel.find().limit(limit).skip(skip);
+  }
+
+  async deleteByStatus(status: IQueryStatus) {
+    return await this.eventModel.deleteOne(status);
   }
 }
 
