@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { CountryModel } from "../models/CountriesSchema.js";
+import { CountryModel } from "../models/index.js";
 import countriesData from "./seedData.js";
 
 class Connection {

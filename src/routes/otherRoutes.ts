@@ -1,6 +1,6 @@
 import express from "express";
 import { NextFunction, Request, Response } from "express";
-import { ErrorMiddlewareInstance } from "../middlewares/index.js";
+import { ErrorMiddlewareInstance } from "../middlewares";
 const otherRouter = express.Router();
 otherRouter.route("/").get(
   // eslint-disable-next-line @typescript-eslint/no-unused-vars

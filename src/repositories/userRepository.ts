@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
-import UserModel from "../models/UsersSchema";
-import IUser from "./interface/IUser";
+import { UserModel } from "../models";
+import { IUser } from "./interface";
+
 import BaseRepository from "./base/BaseRepository";
 class UserRepository extends BaseRepository<IUser> {
   private UserModel: mongoose.Model<IUser>;

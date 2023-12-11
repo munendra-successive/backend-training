@@ -1,13 +1,11 @@
 import express, { Application } from "express";
 import dotenv from "dotenv";
-import ConnectionInstance from "./lib/Connection.js";
+import { ConnectionInstance } from "./lib/index.js";
 import { router, otherRouter } from "./routes/index.js";
 import { Response } from "express";
 
 import {
   ErrorMiddlewareInstance,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  RateLimitMiddlewareInstance,
   OtherMiddlewareInstance,
 } from "./middlewares/index.js";
 
@@ -38,9 +36,6 @@ class Server {
       res.send("Health is ok").status(200);
     });
 
-    this.app.use("*", (req, res) => {
-      res.status(404).send("URL not found");
-    });
     this.app.use(ErrorMiddlewareInstance.errorHandler);
   }
 

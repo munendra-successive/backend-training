@@ -1,46 +1,26 @@
-import ICountry from "../repositories/interface/ICountry";
-import CountryRepoInstance from "../repositories/CountryRepository";
-
+import { ICountry } from "../repositories/interface";
+import { CountryRepoInstance } from "../repositories";
 class CountryService {
   async addCountries(countriesData: ICountry) {
-    try {
-      CountryRepoInstance.insertAll(countriesData);
-    } catch (error) {
-      console.log(error);
-    }
+    return await CountryRepoInstance.insertRecords(countriesData);
   }
 
   async getAll() {
-    try {
-      return await CountryRepoInstance.findAll();
-    } catch (error) {
-      console.log(error);
-    }
+    return await CountryRepoInstance.findRecords();
   }
 
   async deleteByCountry() {
-    try {
-      await CountryRepoInstance.deleteByCountryName();
-    } catch (error) {
-      console.log(error);
-    }
+    return await CountryRepoInstance.deleteByCountryName();
   }
 
   async updateByCountry() {
-    try {
-      await CountryRepoInstance.UpdateByCountryName();
-    } catch (error) {
-      console.log(error);
-    }
+    const filter = { CountryName: "India" };
+    const update = { $set: { CountryName: "Nepal" } };
+    return await CountryRepoInstance.UpdateRecords(filter, update);
   }
 
   async findCountry() {
-    try {
-      const condata = await CountryRepoInstance.findByCountryName();
-      console.log(condata);
-    } catch (error) {
-      console.log("Error is in findCountry", error);
-    }
+    return await CountryRepoInstance.findByCountryName();
   }
 }
 

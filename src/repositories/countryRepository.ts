@@ -1,6 +1,6 @@
-import ICountry from "./interface/ICountry";
+import { ICountry } from "./interface";
 import mongoose from "mongoose";
-import { CountryModel } from "../models/CountriesSchema";
+import { CountryModel } from "../models";
 import BaseRepository from "./base/BaseRepository";
 
 class CountryRepository extends BaseRepository<ICountry> {
@@ -10,27 +10,12 @@ class CountryRepository extends BaseRepository<ICountry> {
     this.CountryModel = CountryModel;
   }
 
-  insertAll = async (data: ICountry) => {
-    await this.insertRecords(data);
-  };
-
-  findAll = async () => {
-    return await this.findRecords();
-  };
-
   findByCountryName = async () => {
     return await this.CountryModel.findOne({ CountryName: "India" });
   };
 
-  UpdateByCountryName = async () => {
-    await this.UpdateRecords(
-      { CountryName: "India" },
-      { $set: { CountryName: "Nepal" } }
-    );
-  };
-
   deleteByCountryName = async () => {
-    await this.CountryModel.deleteMany({ CountryName: "USA" });
+    return await this.CountryModel.deleteMany({ CountryName: "USA" });
   };
 }
 
