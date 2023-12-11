@@ -1,4 +1,4 @@
-import { userConfig } from "../utils/config.js";
+import { userConfig } from "../utils/index.js";
 const validate = (req, res, next) => {
   try {
     console.log(req.originalUrl);

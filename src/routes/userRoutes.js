@@ -21,7 +21,7 @@ router.route("/login").post(validate, Login);
 
 // user/register route
 router.route("/register").post(validate, (req, res) => {
-  res.send("Data Saved Successfully");
+  res.status(200).send("Data Saved Successfully");
 });
 
 export default router;

@@ -1,27 +1,16 @@
 import jwt from "jsonwebtoken";
+import { seedData } from "../utils/index.js";
 
 // PostData
 const PostData = (req, res) => {
   const data = req.body;
   console.log(data);
+  return res.status(200).json({ message: "Data added successfully" });
 };
 
 //GetData
 const GetData = (req, res) => {
-  res.json([
-    {
-      id: 1,
-      name: "Leanne Graham",
-      username: "Bret",
-      email: "Sincere@april.biz",
-    },
-    {
-      id: 2,
-      name: "Ervin Howell",
-      username: "Antonette",
-      email: "Shanna@melissa.tv",
-    },
-  ]);
+  res.json({ "Data: ": seedData });
 };
 const secretKey = "myNameIsMunendraKumarKushwaha";
 

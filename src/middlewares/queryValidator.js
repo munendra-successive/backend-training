@@ -1,7 +1,6 @@
-const queryValidator = (req, res, next) => {
+const queryValidator = (req, res) => {
   if (!isNaN(req.query.age)) {
-    res.send("Is a number");
-    next();
+    return res.status(200).send("Is a number");
   } else {
     res.status(404).send("Not a number");
   }
