@@ -1,25 +1,27 @@
 import express from "express";
-import jwt from "jsonwebtoken";
-import { GetData, PostData } from "../controllers/userController.js";
-import { addCustomHeader, authenticate } from "../middleWares/index.js";
+import { GetData, PostData, Login } from "../controllers/index.js";
+import {
+  validate,
+  authenticate,
+  queryValidator,
+} from "../middlewares/index.js";
 const router = express.Router();
 
-router.route("/").get(authenticate, addCustomHeader, GetData);
-router.route("/").post(authenticate, addCustomHeader, PostData);
+//user get route
+router.route("/").get(authenticate, GetData);
 
-const secretKey = "myNameIsMunendraKumarKushwaha";
+// user post route
+router.route("/").post(authenticate, PostData);
 
-router.post("/login", (req, res) => {
-  const user = { id: 1, name: "monu" };
-  try {
-    jwt.sign(user, secretKey, { expiresIn: "30m" }, (err, token) => {
-      res.status(200).json({ token });
-    });
-  } catch (error) {
-    error.message = "Error in generation of token";
-    err.status = 400;
-    next(error);
-  }
+// user/:id route
+router.route("/query").get(queryValidator);
+
+// user/login route
+router.route("/login").post(validate, Login);
+
+// user/register route
+router.route("/register").post(validate, (req, res) => {
+  res.status(200).send("Data Saved Successfully");
 });
 
 export default router;

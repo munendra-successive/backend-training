@@ -1,19 +1,13 @@
 import express from "express";
 import { router } from "./routes/index.js";
-import { logger, errorHandler, rateLimit } from "./middleWares/index.js";
+import { geoLocation } from "./middlewares/index.js";
 const app = express();
+// app.set("trust proxy", true);
 
 app.use(express.json());
 
-app.use(logger, rateLimit);
-
-app.use("/users", router);
-
-app.use("*/*", (req, res) => {
-  res.status(401).json({ message: "Invalid Route" });
-});
-
-app.use(errorHandler);
+// Routes
+app.use("/users", geoLocation, router);
 
 app.listen(8000, () => {
   console.log("listening on port: 8000");
