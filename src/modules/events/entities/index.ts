@@ -1,6 +1,6 @@
-import IEvent from "./IEvent";
-import ILocation from "./ILocation";
-import IQueryStatus from "./IQueryStatus";
-import IQueryType from "./IQueryType";
+import type IEvent from "./IEvent";
+import type IAddress from "./IAddress";
+import type IQueryStatus from "./IQueryStatus";
+import type IQueryType from "./IQueryType";
 
-export { IEvent, ILocation, IQueryStatus, IQueryType };
+export type { IEvent, IAddress, IQueryStatus, IQueryType };

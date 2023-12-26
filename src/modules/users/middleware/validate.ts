@@ -1,12 +1,11 @@
-import { NextFunction, Request, Response } from "express";
+import { type NextFunction, type Request, type Response } from "express";
 import JoiSchema from "../schema/joiSchema.js";
 
 class Validation {
-  static validate = (req: Request, res: Response, next: NextFunction) => {
+  validate = (req: Request, res: Response, next: NextFunction): any => {
     const { error } = JoiSchema.register().validate(req.body, {
       abortEarly: false,
     });
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     if (error)
       return res
         .status(400)
@@ -15,4 +14,4 @@ class Validation {
   };
 }
 
-export default Validation;
+export default new Validation();

@@ -1,7 +1,7 @@
-import IAddress from "./IAddress";
-import ILogin from "./ILogin";
-import IQueryEmail from "./IQueryEmail";
-import IQueryName from "./IQueryName";
-import IUser from "./IUser";
+import type IAddress from "./IAddress";
+import type ILogin from "./ILogin";
+import type IQueryEmail from "./IQueryEmail";
+import type IQueryName from "./IQueryName";
+import type IUser from "./IUser";
 
-export { IAddress, ILogin, IQueryEmail, IQueryName, IUser };
+export type { IAddress, ILogin, IQueryEmail, IQueryName, IUser };

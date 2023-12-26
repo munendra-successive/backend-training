@@ -1,9 +1,9 @@
 import mongoose from "mongoose";
 
 class Connection {
-  private URI = "mongodb://127.0.0.1:27017/Countries";
+  private readonly URI = "mongodb://127.0.0.1:27017/Countries";
 
-  connectDb = async () => {
+  connectDb = async (): Promise<any> => {
     try {
       await mongoose.connect(this.URI);
       console.log("Connection successful");
@@ -13,8 +13,6 @@ class Connection {
       process.exit(0);
     }
   };
-
-  
 }
 
 export default new Connection();

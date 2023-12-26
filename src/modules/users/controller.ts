@@ -1,14 +1,14 @@
-import { Response, Request } from "express";
+import { type Response, type Request } from "express";
 import { Service } from ".";
-import { ILogin, IUser } from "./entities";
+import { type ILogin, type IUser } from "./entities";
 
-class Controller {
-  public static login = async (req: Request, res: Response) => {
+export class Controller {
+  public login = async (req: Request, res: Response): Promise<any> => {
     try {
       const loginData: ILogin = req.body;
-      const isAuthenticated = await Service.login(loginData);
+      const isAuthenticated: any = await Service.login(loginData);
       if (isAuthenticated) {
-        const token = Service.generateToken(loginData);
+        const token: string = Service.generateToken(loginData);
         return res
           .status(200)
           .json({ msg: "Login Successful", tokenIs: token });
@@ -20,7 +20,7 @@ class Controller {
     }
   };
 
-  public static register = async (req: Request, res: Response) => {
+  public register = async (req: Request, res: Response): Promise<any> => {
     try {
       const registerData: IUser = req.body;
       await Service.register(registerData);
@@ -30,10 +30,10 @@ class Controller {
     }
   };
 
-  public static findByName = async (req: Request, res: Response) => {
+  public findByName = async (req: Request, res: Response): Promise<any> => {
     try {
-      const name = req.params.name;
-      const user = await Service.findByName(name);
+      const name: string = req.params.name;
+      const user: any = await Service.findByName(name);
       if (user.length !== 0) {
         return res.status(200).json({ "Data is": user });
       } else {
@@ -44,12 +44,12 @@ class Controller {
     }
   };
 
-  public static deleteByName = async (req: Request, res: Response) => {
+  public deleteByName = async (req: Request, res: Response): Promise<any> => {
     try {
-      const name = req.params.name;
-      const user = await Service.findByName(name);
+      const name: string = req.params.name;
+      const user: any = await Service.findByName(name);
       if (user.length !== 0) {
-        const response = await Service.deleteByName(name);
+        const response: any = await Service.deleteByName(name);
         if (response) return res.status(200).json({ message: "user deleted" });
       } else {
         return res.status(400).json({ message: "No user exist" });
@@ -59,15 +59,15 @@ class Controller {
     }
   };
 
-  public static updateByName = async (req: Request, res: Response) => {
+  public updateByName = async (req: Request, res: Response): Promise<any> => {
     try {
       const { name1, name2 } = req.query;
       const uname1: string = typeof name1 === "string" ? name1 : "";
       const uname2: string = typeof name2 === "string" ? name2 : "";
 
-      const user = await Service.findByName(uname1);
+      const user: any = await Service.findByName(uname1);
       if (user.length !== 0) {
-        const isUpdated = await Service.updateByName(uname1, uname2);
+        const isUpdated: any = await Service.updateByName(uname1, uname2);
         if (isUpdated) return res.status(200).json({ message: "user updated" });
       } else {
         return res.status(400).json({ message: "No user exist" });
@@ -77,5 +77,3 @@ class Controller {
     }
   };
 }
-
-export default Controller;

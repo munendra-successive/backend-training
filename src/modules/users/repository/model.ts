@@ -1,6 +1,7 @@
-import mongoose, { Model } from "mongoose";
-import { UserSchema } from "./index.js";
-import { IUser } from "../entities";
+import mongoose, { type Model } from "mongoose";
+// import { UserSchema } from "./index.js";
+import UserSchema from "./schema";
+import { type IUser } from "../entities";
 
 const UserModel: Model<IUser> = mongoose.model<IUser>("users", UserSchema);
 export { UserModel };

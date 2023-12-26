@@ -1,5 +1,5 @@
-import { FilterQuery } from "mongoose";
-import { IUser } from "./index.js";
+import { type FilterQuery } from "mongoose";
+import { type IUser } from "./index.js";
 export default interface IQueryName extends FilterQuery<IUser> {
   name: string;
 }

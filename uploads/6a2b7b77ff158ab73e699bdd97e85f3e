@@ -1,0 +1,101 @@
+name,street,city,state,postalCode,country,description,startDate,endDate,category,organizerInfo,type,status
+Workshop Event - 3972,552 Main St.,San Francisco,CA,37980,USA,A Conference event happening in the heart of Los Angeles.,2025-5-18,2025-10-29,Workshop,Independent Group,Performance,Registration open
+Theater Event - 6774,118 Elm St.,New York,WA,35544,USA,A Music event happening in downtown Chicago.,2024-10-1,2024-3-29,Sports,Independent Group,Show,Tickets on sale
+Sports Event - 7804,582 Elm St.,Los Angeles,NY,59082,USA,A Comedy event happening in downtown Los Angeles.,2024-9-26,2025-3-31,Workshop,Independent Group,Game,Limited tickets available
+Music Event - 8512,817 Elm St.,Seattle,NY,86828,USA,A Music event happening in the heart of Chicago.,2025-11-22,2024-2-30,Conference,Local Organizer,Performance,Tickets on sale
+Comedy Event - 5357,160 Park Ave.,Chicago,WA,77648,USA,A Music event happening in the heart of Chicago.,2024-2-2,2025-11-30,Theater,Ticketmaster,Show,Sold out
+Conference Event - 4912,467 Main St.,Chicago,WA,55655,USA,A Music event happening in downtown Chicago.,2025-11-10,2025-2-31,Sports,Independent Group,Performance,Tickets on sale
+Conference Event - 4860,598 Elm St.,New York,NY,19236,USA,A Conference event happening in the heart of Seattle.,2025-7-20,2025-9-30,Theater,Eventbrite,Class,Registration open
+Sports Event - 7846,807 Elm St.,San Francisco,NY,27969,USA,A Theater event happening in midtown Chicago.,2025-8-14,2025-12-30,Conference,Local Organizer,Game,Sold out
+Workshop Event - 5575,544 Park Ave.,Los Angeles,WA,51462,USA,A Sports event happening in midtown Seattle.,2024-8-21,2024-7-30,Music,Ticketmaster,Show,Limited tickets available
+Theater Event - 6245,502 Elm St.,Chicago,NY,18555,USA,A Workshop event happening in midtown Los Angeles.,2025-3-1,2024-12-30,Sports,Eventbrite,Game,Tickets on sale
+Workshop Event - 7411,388 Park Ave.,Los Angeles,CA,17418,USA,A Workshop event happening in downtown San Francisco.,2024-9-14,2025-7-31,Music,Ticketmaster,Class,Limited tickets available
+Theater Event - 9967,740 Main St.,Chicago,CA,93410,USA,A Workshop event happening in downtown Seattle.,2025-4-28,2025-7-30,Music,Local Organizer,Class,Limited tickets available
+Theater Event - 4887,702 Main St.,Chicago,CA,47922,USA,A Comedy event happening in downtown Los Angeles.,2024-9-26,2024-7-31,Workshop,Eventbrite,Game,Tickets on sale
+Sports Event - 6275,214 Main St.,Los Angeles,CA,59922,USA,A Music event happening in midtown New York.,2024-4-15,2024-4-31,Music,Local Organizer,Talk,Registration open
+Conference Event - 7715,799 Park Ave.,Los Angeles,WA,14029,USA,A Comedy event happening in midtown Los Angeles.,2024-4-19,2025-8-30,Conference,Local Organizer,Performance,Tickets on sale
+Music Event - 4319,844 Park Ave.,San Francisco,IL,67656,USA,A Theater event happening in downtown Seattle.,2025-4-11,2025-7-30,Comedy,Eventbrite,Class,Sold out
+Workshop Event - 8337,425 Park Ave.,Chicago,NY,58833,USA,A Sports event happening in downtown San Francisco.,2024-9-25,2025-1-31,Music,Ticketmaster,Concert,Registration open
+Comedy Event - 2365,117 Park Ave.,Seattle,CA,92407,USA,A Sports event happening in midtown Los Angeles.,2024-11-20,2025-6-31,Theater,Ticketmaster,Performance,Limited tickets available
+Conference Event - 7031,441 Park Ave.,Chicago,WA,48853,USA,A Theater event happening in downtown Chicago.,2025-4-17,2024-6-29,Theater,Eventbrite,Talk,Sold out
+Workshop Event - 2171,743 Park Ave.,Seattle,NY,94054,USA,A Workshop event happening in midtown New York.,2024-12-5,2024-10-29,Sports,Ticketmaster,Concert,Registration open
+Conference Event - 5183,303 Main St.,New York,CA,12298,USA,A Music event happening in the heart of Chicago.,2024-8-16,2025-2-30,Comedy,Ticketmaster,Talk,Limited tickets available
+Music Event - 5008,657 Elm St.,Seattle,CA,84288,USA,A Workshop event happening in midtown San Francisco.,2025-6-23,2024-5-30,Theater,Local Organizer,Talk,Tickets on sale
+Sports Event - 4488,942 Main St.,Seattle,NY,84170,USA,A Workshop event happening in downtown Chicago.,2024-5-11,2024-5-29,Workshop,Eventbrite,Talk,Registration open
+Music Event - 3654,304 Park Ave.,Chicago,WA,85000,USA,A Comedy event happening in downtown Los Angeles.,2024-3-7,2025-11-29,Comedy,Local Organizer,Performance,Limited tickets available
+Theater Event - 2582,708 Elm St.,Chicago,NY,95542,USA,A Theater event happening in midtown Seattle.,2025-3-1,2025-11-30,Sports,Independent Group,Concert,Limited tickets available
+Conference Event - 3212,815 Main St.,New York,IL,24505,USA,A Sports event happening in midtown New York.,2024-11-14,2024-11-30,Sports,Eventbrite,Concert,Tickets on sale
+Theater Event - 3042,154 Elm St.,Chicago,CA,86263,USA,A Conference event happening in midtown San Francisco.,2024-1-15,2024-3-29,Music,Eventbrite,Performance,Limited tickets available
+Workshop Event - 3844,435 Park Ave.,San Francisco,NY,60244,USA,A Comedy event happening in midtown New York.,2025-4-2,2025-1-31,Conference,Independent Group,Game,Tickets on sale
+Sports Event - 7378,845 Elm St.,New York,IL,85308,USA,A Sports event happening in the heart of Seattle.,2025-1-22,2025-8-31,Conference,Local Organizer,Talk,Registration open
+Conference Event - 5549,590 Main St.,Chicago,IL,44658,USA,A Workshop event happening in the heart of Seattle.,2024-1-10,2025-9-31,Music,Local Organizer,Performance,Limited tickets available
+Music Event - 1653,159 Park Ave.,Seattle,WA,51872,USA,A Workshop event happening in downtown Los Angeles.,2025-3-26,2025-4-29,Workshop,Eventbrite,Talk,Registration open
+Comedy Event - 1410,268 Park Ave.,Chicago,IL,75099,USA,A Workshop event happening in downtown San Francisco.,2025-8-6,2024-10-29,Music,Ticketmaster,Talk,Sold out
+Music Event - 4542,686 Elm St.,Los Angeles,NY,64430,USA,A Music event happening in the heart of Seattle.,2025-5-18,2025-7-31,Workshop,Independent Group,Class,Registration open
+Theater Event - 8569,830 Elm St.,Seattle,IL,29638,USA,A Workshop event happening in midtown Los Angeles.,2024-4-16,2024-5-30,Conference,Local Organizer,Game,Registration open
+Workshop Event - 1159,414 Main St.,Chicago,WA,22964,USA,A Comedy event happening in downtown San Francisco.,2024-4-7,2025-3-31,Comedy,Live Nation,Performance,Registration open
+Theater Event - 8360,155 Park Ave.,New York,CA,56709,USA,A Sports event happening in the heart of Chicago.,2025-7-27,2025-3-30,Sports,Ticketmaster,Game,Sold out
+Theater Event - 8025,983 Park Ave.,San Francisco,IL,90465,USA,A Theater event happening in downtown Seattle.,2024-4-18,2025-11-30,Comedy,Local Organizer,Talk,Registration open
+Sports Event - 4737,712 Main St.,Los Angeles,CA,65709,USA,A Music event happening in the heart of New York.,2024-6-16,2024-9-29,Theater,Ticketmaster,Concert,Tickets on sale
+Workshop Event - 4738,708 Park Ave.,San Francisco,NY,26126,USA,A Workshop event happening in downtown San Francisco.,2025-8-14,2025-8-31,Music,Local Organizer,Class,Tickets on sale
+Sports Event - 9347,695 Elm St.,New York,NY,83436,USA,A Conference event happening in downtown New York.,2024-5-12,2025-8-30,Workshop,Eventbrite,Performance,Sold out
+Theater Event - 9491,798 Elm St.,San Francisco,IL,86085,USA,A Workshop event happening in downtown Los Angeles.,2024-2-25,2025-4-29,Sports,Ticketmaster,Performance,Registration open
+Theater Event - 7816,658 Main St.,San Francisco,CA,69075,USA,A Comedy event happening in midtown Chicago.,2024-7-13,2024-9-31,Comedy,Local Organizer,Game,Tickets on sale
+Workshop Event - 6491,264 Main St.,Chicago,WA,63841,USA,A Workshop event happening in downtown Chicago.,2024-9-14,2025-2-29,Conference,Independent Group,Class,Tickets on sale
+Music Event - 1093,685 Park Ave.,Chicago,NY,40209,USA,A Conference event happening in downtown San Francisco.,2025-5-27,2024-4-31,Conference,Live Nation,Talk,Registration open
+Music Event - 8737,126 Park Ave.,Chicago,IL,58933,USA,A Theater event happening in the heart of San Francisco.,2024-12-2,2024-12-29,Workshop,Eventbrite,Game,Limited tickets available
+Theater Event - 8379,411 Elm St.,San Francisco,CA,65667,USA,A Comedy event happening in midtown Los Angeles.,2024-1-15,2025-7-30,Workshop,Eventbrite,Performance,Limited tickets available
+Theater Event - 4262,278 Main St.,New York,CA,45682,USA,A Workshop event happening in midtown Los Angeles.,2025-10-18,2024-6-29,Conference,Ticketmaster,Show,Tickets on sale
+Comedy Event - 5724,577 Park Ave.,New York,CA,97429,USA,A Theater event happening in downtown Seattle.,2024-2-5,2025-10-31,Conference,Independent Group,Performance,Registration open
+Sports Event - 6476,182 Park Ave.,Los Angeles,WA,31821,USA,A Theater event happening in downtown Los Angeles.,2024-12-12,2024-3-31,Theater,Live Nation,Performance,Registration open
+Music Event - 6499,410 Main St.,Seattle,CA,89813,USA,A Sports event happening in the heart of Chicago.,2025-11-22,2025-4-31,Comedy,Eventbrite,Class,Registration open
+Workshop Event - 8545,347 Park Ave.,Chicago,CA,19797,USA,A Theater event happening in midtown New York.,2024-7-20,2024-9-31,Comedy,Local Organizer,Talk,Sold out
+Sports Event - 5772,501 Main St.,Seattle,CA,99284,USA,A Conference event happening in the heart of Seattle.,2024-2-27,2025-6-31,Comedy,Live Nation,Show,Tickets on sale
+Theater Event - 1521,372 Elm St.,New York,NY,11688,USA,A Music event happening in midtown New York.,2024-4-23,2024-2-31,Sports,Live Nation,Game,Tickets on sale
+Comedy Event - 1113,811 Main St.,Chicago,NY,11143,USA,A Comedy event happening in downtown San Francisco.,2024-10-10,2025-1-31,Workshop,Eventbrite,Performance,Limited tickets available
+Sports Event - 5762,260 Park Ave.,San Francisco,NY,70239,USA,A Conference event happening in downtown Chicago.,2024-11-14,2025-11-30,Theater,Independent Group,Performance,Limited tickets available
+Music Event - 4925,851 Elm St.,Seattle,NY,37976,USA,A Sports event happening in midtown San Francisco.,2024-12-26,2025-6-30,Workshop,Local Organizer,Show,Tickets on sale
+Theater Event - 5210,860 Main St.,Los Angeles,NY,26047,USA,A Conference event happening in midtown San Francisco.,2024-1-12,2025-9-29,Comedy,Independent Group,Game,Registration open
+Workshop Event - 2165,733 Main St.,Los Angeles,CA,68488,USA,A Music event happening in downtown Chicago.,2024-5-8,2025-6-29,Workshop,Independent Group,Class,Limited tickets available
+Music Event - 5843,490 Main St.,Los Angeles,IL,77104,USA,A Sports event happening in downtown Chicago.,2025-10-13,2024-8-29,Music,Independent Group,Show,Sold out
+Workshop Event - 8000,983 Elm St.,Los Angeles,IL,92265,USA,A Workshop event happening in midtown New York.,2024-11-9,2024-3-31,Music,Live Nation,Class,Sold out
+Theater Event - 7181,513 Main St.,Seattle,NY,16798,USA,A Comedy event happening in downtown Los Angeles.,2025-1-3,2024-11-29,Music,Eventbrite,Performance,Tickets on sale
+Music Event - 9515,491 Main St.,Seattle,WA,94025,USA,A Workshop event happening in midtown San Francisco.,2025-9-10,2025-1-31,Conference,Independent Group,Game,Tickets on sale
+Comedy Event - 8231,727 Elm St.,San Francisco,NY,75204,USA,A Music event happening in midtown Seattle.,2025-11-15,2025-8-29,Sports,Ticketmaster,Performance,Limited tickets available
+Workshop Event - 2456,256 Main St.,Chicago,CA,54942,USA,A Workshop event happening in the heart of New York.,2025-8-20,2025-8-30,Music,Local Organizer,Game,Registration open
+Music Event - 4450,541 Elm St.,Chicago,NY,64741,USA,A Sports event happening in midtown Seattle.,2024-8-14,2024-10-29,Workshop,Ticketmaster,Talk,Tickets on sale
+Conference Event - 5324,792 Main St.,New York,CA,88196,USA,A Music event happening in midtown New York.,2024-8-21,2025-3-30,Sports,Eventbrite,Show,Registration open
+Comedy Event - 9980,951 Elm St.,New York,IL,85053,USA,A Theater event happening in midtown New York.,2024-5-15,2024-5-30,Music,Independent Group,Performance,Registration open
+Theater Event - 6013,511 Main St.,New York,CA,74822,USA,A Comedy event happening in midtown Chicago.,2025-12-27,2025-11-30,Conference,Local Organizer,Talk,Sold out
+Workshop Event - 7768,274 Park Ave.,New York,CA,84689,USA,A Sports event happening in downtown New York.,2024-12-15,2024-2-31,Comedy,Ticketmaster,Game,Registration open
+Comedy Event - 2398,736 Park Ave.,Chicago,NY,45997,USA,A Comedy event happening in downtown Los Angeles.,2025-11-6,2025-7-29,Music,Eventbrite,Talk,Limited tickets available
+Sports Event - 6461,620 Main St.,Seattle,WA,55260,USA,A Sports event happening in downtown Seattle.,2024-11-3,2024-10-31,Workshop,Local Organizer,Game,Registration open
+Workshop Event - 2705,592 Park Ave.,Chicago,CA,52852,USA,A Music event happening in midtown San Francisco.,2024-10-21,2024-8-30,Sports,Local Organizer,Show,Registration open
+Theater Event - 4994,899 Main St.,Chicago,CA,16874,USA,A Theater event happening in the heart of Seattle.,2024-1-4,2024-12-30,Theater,Live Nation,Talk,Registration open
+Workshop Event - 5688,367 Main St.,Seattle,NY,45418,USA,A Comedy event happening in downtown New York.,2025-1-18,2024-10-30,Conference,Ticketmaster,Performance,Tickets on sale
+Comedy Event - 7881,922 Main St.,Los Angeles,CA,87061,USA,A Conference event happening in midtown New York.,2025-11-27,2024-8-30,Music,Live Nation,Class,Tickets on sale
+Comedy Event - 7470,111 Elm St.,New York,WA,70285,USA,A Workshop event happening in the heart of Seattle.,2025-11-13,2024-8-30,Sports,Independent Group,Show,Sold out
+Conference Event - 1112,833 Main St.,San Francisco,IL,75973,USA,A Music event happening in the heart of Seattle.,2024-3-7,2025-10-30,Sports,Eventbrite,Concert,Limited tickets available
+Conference Event - 5170,217 Elm St.,Chicago,NY,47392,USA,A Theater event happening in the heart of Chicago.,2025-9-20,2025-10-31,Sports,Live Nation,Talk,Limited tickets available
+Conference Event - 1106,742 Park Ave.,New York,WA,12255,USA,A Comedy event happening in the heart of Chicago.,2024-1-21,2024-9-30,Theater,Live Nation,Concert,Sold out
+Theater Event - 9795,236 Park Ave.,San Francisco,IL,25308,USA,A Music event happening in the heart of New York.,2025-1-16,2024-8-31,Workshop,Eventbrite,Class,Tickets on sale
+Sports Event - 2984,460 Park Ave.,Los Angeles,WA,56301,USA,A Comedy event happening in the heart of Seattle.,2024-1-21,2024-10-31,Theater,Live Nation,Performance,Tickets on sale
+Workshop Event - 1685,666 Elm St.,San Francisco,NY,94296,USA,A Conference event happening in midtown Seattle.,2025-8-2,2025-12-31,Theater,Eventbrite,Performance,Registration open
+Sports Event - 3367,383 Park Ave.,Chicago,WA,60436,USA,A Comedy event happening in downtown Seattle.,2025-5-24,2024-5-29,Conference,Live Nation,Show,Sold out
+Sports Event - 5222,835 Main St.,Los Angeles,CA,69723,USA,A Sports event happening in downtown San Francisco.,2024-6-21,2024-6-30,Music,Ticketmaster,Show,Tickets on sale
+Theater Event - 3443,770 Main St.,Los Angeles,CA,83567,USA,A Comedy event happening in the heart of Los Angeles.,2025-3-25,2024-11-31,Music,Ticketmaster,Talk,Tickets on sale
+Theater Event - 3756,870 Park Ave.,Los Angeles,IL,54948,USA,A Conference event happening in the heart of Los Angeles.,2024-9-2,2024-4-29,Workshop,Live Nation,Concert,Sold out
+Conference Event - 4377,780 Main St.,Chicago,NY,74443,USA,A Sports event happening in downtown Seattle.,2024-4-27,2024-1-31,Workshop,Ticketmaster,Game,Registration open
+Sports Event - 6073,917 Park Ave.,San Francisco,IL,42935,USA,A Theater event happening in downtown San Francisco.,2025-8-11,2025-7-30,Comedy,Independent Group,Talk,Registration open
+Comedy Event - 3951,248 Elm St.,Los Angeles,IL,93095,USA,A Sports event happening in the heart of Seattle.,2024-11-6,2024-1-31,Comedy,Eventbrite,Game,Registration open
+Comedy Event - 8419,861 Park Ave.,Chicago,WA,37474,USA,A Sports event happening in midtown Los Angeles.,2024-5-3,2025-7-29,Music,Ticketmaster,Performance,Registration open
+Workshop Event - 7709,452 Elm St.,Los Angeles,CA,92059,USA,A Theater event happening in the heart of Chicago.,2025-7-5,2024-5-30,Theater,Independent Group,Concert,Registration open
+Workshop Event - 7656,529 Main St.,Los Angeles,WA,95646,USA,A Music event happening in the heart of San Francisco.,2024-12-24,2025-5-29,Conference,Live Nation,Game,Registration open
+Sports Event - 6466,768 Park Ave.,San Francisco,NY,14715,USA,A Music event happening in midtown New York.,2025-5-17,2024-12-29,Workshop,Live Nation,Performance,Tickets on sale
+Workshop Event - 2452,557 Elm St.,Seattle,CA,28187,USA,A Comedy event happening in the heart of Seattle.,2024-1-23,2024-10-31,Music,Live Nation,Performance,Registration open
+Theater Event - 2179,138 Elm St.,San Francisco,NY,81876,USA,A Comedy event happening in midtown Chicago.,2024-7-22,2025-6-31,Theater,Local Organizer,Class,Sold out
+Sports Event - 9499,466 Elm St.,Los Angeles,CA,13948,USA,A Theater event happening in midtown Seattle.,2025-6-13,2024-1-29,Theater,Live Nation,Talk,Sold out
+Music Event - 6732,284 Elm St.,Seattle,CA,67636,USA,A Theater event happening in the heart of New York.,2024-3-28,2025-11-31,Conference,Ticketmaster,Show,Tickets on sale
+Music Event - 3355,666 Main St.,New York,WA,23166,USA,A Theater event happening in downtown Seattle.,2025-11-26,2024-7-29,Conference,Eventbrite,Talk,Limited tickets available
+Comedy Event - 9419,367 Elm St.,Chicago,CA,91724,USA,A Theater event happening in the heart of Seattle.,2024-4-2,2024-5-31,Comedy,Live Nation,Show,Sold out
+Conference Event - 2186,849 Elm St.,Los Angeles,CA,34136,USA,A Music event happening in midtown Seattle.,2025-3-9,2024-4-31,Sports,Ticketmaster,Game,Registration open

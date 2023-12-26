@@ -1,7 +1,7 @@
 import Joi from "joi";
 
 class JoiSchema {
-  static register = () => {
+  register = (): Joi.ObjectSchema<any> => {
     return Joi.object({
       name: Joi.string().alphanum().min(3).max(15).required(),
       email: Joi.string().email({
@@ -9,11 +9,11 @@ class JoiSchema {
         tlds: { allow: ["com", "in", "net"] },
       }),
       password: Joi.string()
-        .pattern(new RegExp("^(?=.*[@$])(?=.*[a-zA-Z0-9]).{3,30}$"))
+        .pattern(/^(?=.*[@$])(?=.*[a-zA-Z0-9]).{3,30}$/)
         .required(),
       address: Joi.string().min(10).max(50).required(),
       phone: Joi.string().alphanum().length(10).required(),
     });
   };
 }
-export default JoiSchema;
+export default new JoiSchema();

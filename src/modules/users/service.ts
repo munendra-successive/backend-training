@@ -1,20 +1,22 @@
 import { Repository } from "./repository";
-import { ILogin, IUser, IQueryName } from "./entities";
+import { type ILogin, type IUser, type IQueryName } from "./entities";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 
 class Service {
-  private static secretKey = "myNameIsMunendraKumarKushwaha";
+  private readonly secretKey = "myNameIsMunendraKumarKushwaha";
 
-  public static generateToken(loginData: ILogin) {
-    const token = jwt.sign(loginData, Service.secretKey, { expiresIn: "30m" });
+  public generateToken(loginData: ILogin): string {
+    const token: string = jwt.sign(loginData, this.secretKey, {
+      expiresIn: "30m",
+    });
     return token;
   }
 
-  public static async login(loginData: ILogin) {
+  public async login(loginData: ILogin): Promise<any> {
     const { email, password } = loginData;
-    const filter = { email: email };
-    const user = await Repository.findByField(filter);
+    const filter: { email: string } = { email };
+    const user: any = await Repository.findByField(filter);
 
     if (user) {
       return await bcrypt.compare(password, user[0].password);
@@ -23,24 +25,35 @@ class Service {
     }
   }
 
-  public static async register(regData: IUser) {
+  public async register(regData: IUser): Promise<any> {
     return await Repository.register(regData);
   }
 
-  public static updateByName = async (oldName: string, newName: string) => {
-    const filter = { name: oldName };
-    const update = { $set: { name: newName } };
+  public updateByName = async (
+    oldName: string,
+    newName: string,
+  ): Promise<any> => {
+    const filter: {
+      name: string;
+    } = { name: oldName };
+    const update: {
+      $set: {
+        name: string;
+      };
+    } = { $set: { name: newName } };
     return await Repository.updateRecords(filter, update);
   };
 
-  public static findByName = async (name: string) => {
-    const filter = { name: name };
+  public findByName = async (name: string): Promise<any> => {
+    const filter: {
+      name: string;
+    } = { name };
     return await Repository.findByField(filter);
   };
 
-  public static deleteByName = async (name: string) => {
+  public deleteByName = async (name: string): Promise<any> => {
     const query: IQueryName = { name };
     return await Repository.deleteByName(query);
   };
 }
-export default Service;
+export default new Service();

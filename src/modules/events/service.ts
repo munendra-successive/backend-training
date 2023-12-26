@@ -1,47 +1,57 @@
-import { IEvent, IQueryStatus } from "./entities";
+import { type IEvent, type IQueryStatus } from "./entities";
 import { Repository } from "./repository";
 
 class Service {
-  public static async getAll() {
+  public async getAll(): Promise<any> {
     return await Repository.get();
   }
 
-  public static async add(eventData: IEvent) {
-    return await Repository.insert(eventData);
+  public async add(eventData: IEvent): Promise<void> {
+    await Repository.insert(eventData);
   }
 
-  public static async getLimit(limit: number, skip: number) {
+  public async getLimit(limit: number, skip: number): Promise<any> {
     return await Repository.getLimit(limit, skip);
   }
 
-  public static async findByType(type: string) {
-    const filter = { type: type };
+  public async findByType(type: string): Promise<any> {
+    const filter: { type: string } = { type };
     return await Repository.findByField(filter);
   }
 
-  public static async findByStatus(status: string) {
-    const filter = { status: status };
+  public async findByStatus(status: string): Promise<any> {
+    const filter: { status: string } = { status };
     return await Repository.findByField(filter);
   }
 
-  public static async deleteByStatus(status: string) {
+  public async deleteByStatus(status: string): Promise<any> {
     const query: IQueryStatus = { status };
     return await Repository.deleteByStatus(query);
   }
 
-  public static async updateByStatus(oldStatus: string, newStatus: string) {
-    const filter = { status: oldStatus };
-    const update = { $set: { status: newStatus } };
+  public async updateByStatus(
+    oldStatus: string,
+    newStatus: string,
+  ): Promise<any> {
+    const filter: { status: string } = { status: oldStatus };
+    const update: { $set: { status: string } } = {
+      $set: { status: newStatus },
+    };
     return await Repository.updateRecords(filter, update);
   }
 
-  public static async count() {
+  public async count(): Promise<any> {
     return await Repository.countRecords();
   }
 
-  public static async deleteAll() {
-    return await Repository.deleteAll();
+  public async deleteAll(): Promise<any> {
+    await Repository.deleteAll();
+  }
+
+  public async findById(_id: string): Promise<any> {
+    const filter: { _id: string } = { _id };
+    return await Repository.findByField(filter);
   }
 }
 
-export default Service;
+export default new Service();

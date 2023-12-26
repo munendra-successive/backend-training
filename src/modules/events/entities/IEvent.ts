@@ -1,14 +1,14 @@
-import { Document } from "mongoose";
-import { ILocation } from "../entities/index.js";
+import { type Document } from "mongoose";
+import { type IAddress } from "../entities/index.js";
 export default interface IEvent extends Document {
   name: string;
-  location: ILocation;
+  address: IAddress; // IAddress
   description: string;
   startDate: Date;
   endDate: Date;
-  category: string;
-  organizerInfo: string;
+  category: string; // enum limited
+  organizerInfo: string; // array of objects- multiple organizers
   type: string;
-  status: string;
-  createdAt: string;
+  status: string; // enum
+  createdAt: string; // updated at
 }

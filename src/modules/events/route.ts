@@ -1,7 +1,7 @@
-import express from "express";
+import { Router } from "express";
 import { Controller } from ".";
 
-const router = express.Router();
+const router: Router = Router();
 
 router.route("/create").post(Controller.add);
 
@@ -17,6 +17,8 @@ router.route("/update").patch(Controller.updateStatus);
 
 router.route("/count").get(Controller.countEvents);
 
-router.route("deleteall").delete(Controller.deleteAll);
+router.route("/deleteall").delete(Controller.deleteAll);
+
+router.route("/getById/:id").get(Controller.getById);
 
 export default router;

@@ -1,8 +1,8 @@
-import { Response, Request, NextFunction } from "express";
-import { SuperfaceClient } from "@superfaceai/one-sdk";
+import { type Response, type Request, type NextFunction } from "express";
+import { type Profile, SuperfaceClient } from "@superfaceai/one-sdk";
 
 class OtherMiddleware {
-  private sdk = new SuperfaceClient();
+  private readonly sdk = new SuperfaceClient();
 
   constructor() {
     this.addCustomHeader = this.addCustomHeader.bind(this);
@@ -11,14 +11,20 @@ class OtherMiddleware {
     this.Logger = this.Logger.bind(this);
   }
 
-  public addCustomHeader(req: Request, res: Response, next: NextFunction) {
+  public addCustomHeader = (
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ): void => {
     res.setHeader("customHeader", "X-myCustomHeader");
     next();
-  }
+  };
 
-  public async run(ip: string) {
-    const profile = await this.sdk.getProfile("address/ip-geolocation@1.0.1");
-    const result = await profile.getUseCase("IpGeolocation").perform(
+  public run = async (ip: string): Promise<any> => {
+    const profile: Profile = await this.sdk.getProfile(
+      "address/ip-geolocation@1.0.1",
+    );
+    const result: any = await profile.getUseCase("IpGeolocation").perform(
       {
         ipAddress: ip,
       },
@@ -29,24 +35,26 @@ class OtherMiddleware {
             apikey: "9a511b6fc8334e1852cfbbd4ff3f1af3c42ed6abc75e96a1648b969a",
           },
         },
-      }
+      },
     );
 
     try {
-      const data = result.unwrap();
+      const data: any = result.unwrap();
       return data;
     } catch (error) {
       console.error(error);
     }
-  }
+  };
 
-  public async geoLocation(req: Request, res: Response, next: NextFunction) {
+  public geoLocation = async (
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ): Promise<any> => {
     //   const ip = "45.249.87.217";
     //   const ip = "42.108.5.67";
     const ip: string = "45.249.87.217";
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     try {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const response: any = await this.run(ip);
       if (response.addressRegion !== "Delhi") {
         return res.status(403).send("User is not from the expected region");
@@ -56,16 +64,16 @@ class OtherMiddleware {
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
-  public Logger(req: Request, res: Response, next: NextFunction) {
+  public Logger = (req: Request, res: Response, next: NextFunction): void => {
     console.log(
       `Method is ${req.method}, Urls is ${
         req.originalUrl
-      } and TimeStamp is: ${new Date().toLocaleString()}`
+      } and TimeStamp is: ${new Date().toLocaleString()}`,
     );
     next();
-  }
+  };
 }
 
 export default new OtherMiddleware();

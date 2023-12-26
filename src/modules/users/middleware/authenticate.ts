@@ -1,26 +1,35 @@
-import { NextFunction, Request, Response } from "express";
+import { type NextFunction, type Request, type Response } from "express";
 import jwt from "jsonwebtoken";
 
 class Authentication {
-  private static secretKey = "myNameIsMunendraKumarKushwaha";
+  private readonly secretKey = "myNameIsMunendraKumarKushwaha";
 
-  static authenticate = (req: Request, res: Response, next: NextFunction) => {
-    const token = req.header("authorization");
+  public authenticate = (
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ): Response<any, Record<string, any>> | undefined => {
+    const token: any = req.header("authorization");
     if (!token) {
-      return next();
+      next();
+      return;
     }
     try {
-      const decoded = jwt.verify(token, Authentication.secretKey);
+      const decoded: string | jwt.JwtPayload = jwt.verify(
+        token,
+        this.secretKey,
+      );
       return res
         .status(200)
         .json({ message: "Login Successful", details: decoded });
     } catch (error) {
       if (error instanceof jwt.TokenExpiredError) {
-        return next();
+        next();
+        return;
       }
       return res.status(403).json({ message: error });
     }
   };
 }
 
-export default Authentication;
+export default new Authentication();
