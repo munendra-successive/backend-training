@@ -1,6 +1,7 @@
-import { type Document } from "mongoose";
-import { type IAddress } from "../entities/index.js";
-export default interface IEvent extends Document {
+import { type Document } from 'mongoose';
+import { type IAddress } from './index';
+
+interface IEvent extends Document {
   name: string;
   address: IAddress; // IAddress
   description: string;
@@ -12,3 +13,4 @@ export default interface IEvent extends Document {
   status: string; // enum
   createdAt: string; // updated at
 }
+export default IEvent;

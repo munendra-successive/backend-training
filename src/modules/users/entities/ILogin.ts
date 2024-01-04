@@ -1,5 +1,8 @@
-import { type Document } from "mongoose";
-export default interface ILogin extends Document {
+import { type Document } from 'mongoose';
+
+interface ILogin extends Document {
   email: string;
   password: string;
 }
+
+export default ILogin;

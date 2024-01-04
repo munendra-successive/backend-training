@@ -1,5 +1,8 @@
-import { type FilterQuery } from "mongoose";
-import { type IEvent } from "./index.js";
-export default interface IQueryType extends FilterQuery<IEvent> {
+import { type FilterQuery } from 'mongoose';
+import { type IEvent } from '.';
+
+interface IQueryType extends FilterQuery<IEvent> {
   type: string;
 }
+
+export default IQueryType;

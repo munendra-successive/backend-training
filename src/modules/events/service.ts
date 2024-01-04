@@ -1,57 +1,134 @@
-import { type IEvent, type IQueryStatus } from "./entities";
-import { Repository } from "./repository";
+import fs from 'fs';
+import csvParser from 'csv-parser';
+import { type IEvent, type IQueryStatus } from './entities';
+import { Repository } from './repository';
+import BulkModel from '../bulkupload/repository/model';
 
 class Service {
-  public async getAll(): Promise<any> {
-    return await Repository.get();
-  }
+    static async getAll(): Promise<any> {
+        const result = await Repository.get();
+        return result;
+    }
 
-  public async add(eventData: IEvent): Promise<void> {
-    await Repository.insert(eventData);
-  }
+    static async add(eventData: IEvent): Promise<void> {
+        await Repository.insert(eventData);
+    }
 
-  public async getLimit(limit: number, skip: number): Promise<any> {
-    return await Repository.getLimit(limit, skip);
-  }
+    static async getLimit(limit: number, skip: number): Promise<any> {
+        const result = await Repository.getLimit(limit, skip);
+        return result;
+    }
 
-  public async findByType(type: string): Promise<any> {
-    const filter: { type: string } = { type };
-    return await Repository.findByField(filter);
-  }
+    static async findByType(type: string): Promise<any> {
+        const filter: { type: string } = { type };
+        const result = await Repository.findByField(filter);
+        return result;
+    }
 
-  public async findByStatus(status: string): Promise<any> {
-    const filter: { status: string } = { status };
-    return await Repository.findByField(filter);
-  }
+    static async findByStatus(status: string): Promise<any> {
+        const filter: { status: string } = { status };
+        const result = await Repository.findByField(filter);
+        return result;
+    }
 
-  public async deleteByStatus(status: string): Promise<any> {
-    const query: IQueryStatus = { status };
-    return await Repository.deleteByStatus(query);
-  }
+    static async deleteByStatus(status: string): Promise<any> {
+        const query: IQueryStatus = { status };
+        const result = await Repository.deleteByStatus(query);
+        return result;
+    }
 
-  public async updateByStatus(
-    oldStatus: string,
-    newStatus: string,
-  ): Promise<any> {
-    const filter: { status: string } = { status: oldStatus };
-    const update: { $set: { status: string } } = {
-      $set: { status: newStatus },
-    };
-    return await Repository.updateRecords(filter, update);
-  }
+    static async updateByStatus(
+        oldStatus: string,
+        newStatus: string,
+    ): Promise<any> {
+        const filter: { status: string } = { status: oldStatus };
+        const update: { $set: { status: string } } = {
+            $set: { status: newStatus },
+        };
+        const result = await Repository.updateRecords(filter, update);
+        return result;
+    }
 
-  public async count(): Promise<any> {
-    return await Repository.countRecords();
-  }
+    static async count(): Promise<any> {
+        const result = await Repository.countRecords();
+        return result;
+    }
 
-  public async deleteAll(): Promise<any> {
-    await Repository.deleteAll();
-  }
+    static async deleteAll(): Promise<void> {
+        await Repository.deleteAll();
+    }
 
-  public async findById(_id: string): Promise<any> {
-    const filter: { _id: string } = { _id };
-    return await Repository.findByField(filter);
-  }
+    static async findById(_id: string): Promise<any> {
+        const filter: { _id: string } = { _id };
+        const result = await Repository.findByField(filter);
+        return result;
+    }
+
+    static async UpdateById(eventId: string, dataToUpdate: IEvent): Promise<any> {
+        const result = await Repository.UpdateById(eventId, dataToUpdate);
+        return result;
+    }
+
+    static async deleteById(eventId: string): Promise<any> {
+        const result = await Repository.deleteById(eventId);
+        return result;
+    }
+
+    static async uploadCsv(fileInfo: {
+    fileName: string;
+    filePath: string;
+  }): Promise<void> {
+        const { fileName, filePath } = fileInfo;
+
+        const dataToInsert: any[] = [];
+        const startTime: string = new Date().toLocaleString();
+
+        fs.createReadStream(filePath)
+            .pipe(csvParser())
+            .on('data', (row) => {
+                // Process each row of the CSV and construct the data to be inserted
+                // Customize this part according to your CSV columns and schema
+                dataToInsert.push({
+                    name: row.name,
+                    address: {
+                        street: row.street,
+                        city: row.city,
+                        state: row.state,
+                        postalCode: row.postalCode,
+                        country: row.country,
+                    },
+                    description: row.description,
+                    startDate: row.startDate,
+                    endDate: row.endDate,
+                    category: row.category,
+                    organizerInfo: row.organizerInfo,
+                    type: row.type,
+                    status: row.status,
+                });
+            })
+            .on('end', async () => {
+                try {
+                    // Save the data to MongoDB using Repository.uploadCsv method
+                    const result: any = await Repository.uploadCsv(dataToInsert);
+                    // Remove the uploaded CSV file after processing
+                    fs.unlinkSync(filePath);
+
+                    const endTime: string = new Date().toLocaleString();
+
+                    // Create an entry in BulkModel (if this model exists) or handle accordingly
+                    await BulkModel.create({
+                        startTime,
+                        endTime,
+                        noOfItemsToBeInserted: dataToInsert.length,
+                        successfulInserted: result.length,
+                        failedDuringInsert: dataToInsert.length - result.length,
+                        fileName,
+                    });
+                } catch (error) {
+                    // eslint-disable-next-line no-console
+                    console.error('Error processing CSV:', error);
+                }
+            });
+    }
 }
-
-export default new Service();
+export default Service;

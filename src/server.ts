@@ -1,5 +1,5 @@
-import App from "./app.js";
+import App from './app';
 
 const app: App = new App();
-void app.bootstrap();
+app.bootstrap();
 app.start();

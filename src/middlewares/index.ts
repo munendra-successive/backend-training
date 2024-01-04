@@ -1,4 +1,3 @@
-import ErrorMiddlewareInstance from "./ErrorMiddleware.js";
-import OtherMiddlewareInstance from "./OtherMiddleware.js";
+import OtherMiddlewareInstance from './OtherMiddleware';
 
-export { ErrorMiddlewareInstance, OtherMiddlewareInstance };
+export default OtherMiddlewareInstance;
