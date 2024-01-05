@@ -1,5 +1,4 @@
 import mongoose, { type Model } from 'mongoose';
-// import { UserSchema } from "./index.js";
 import UserSchema from './schema';
 import { type IUser } from '../entities';
 

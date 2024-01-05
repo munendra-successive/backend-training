@@ -1,4 +1,4 @@
-import { type CallbackWithoutResultAndOptionalError, Schema } from 'mongoose';
+import { Schema } from 'mongoose';
 import { type IEvent, type IAddress } from '../entities';
 
 const addressSchema: Schema = new Schema<IAddress>({
@@ -22,30 +22,6 @@ const EventSchema: Schema = new Schema<IEvent>(
         status: { type: String, required: true },
     },
     { timestamps: true },
-);
-
-// Pre-save hook to ensure startDate is before endDate
-EventSchema.pre<IEvent>(
-    'save',
-    function startDate(next: CallbackWithoutResultAndOptionalError) {
-        if (this.startDate > this.endDate) {
-            next(new Error('Start date must be before the end date.'));
-        } else {
-            next();
-        }
-    },
-);
-
-// Pre-save hook to ensure endDate is after startDate
-EventSchema.pre<IEvent>(
-    'save',
-    function endDate(next: CallbackWithoutResultAndOptionalError) {
-        if (this.endDate < this.startDate) {
-            next(new Error('End date must be after the start date.'));
-        } else {
-            next();
-        }
-    },
 );
 
 export default EventSchema;

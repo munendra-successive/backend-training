@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 class Connection {
     private readonly URI = 'mongodb://127.0.0.1:27017/Countries';
 
-    connectDb = async (): Promise<any> => {
+    static connectDb = async (): Promise<any> => {
         try {
             await mongoose.connect(this.URI);
             console.log('Connection successful');
@@ -13,6 +13,15 @@ class Connection {
             process.exit(0);
         }
     };
+
+    static disconnectDb = async (): Promise<any> => {
+        try {
+            await mongoose.disconnect();
+            console.log('Disconnect successfully');
+        } catch (error) {
+            console.log('Error in disconnect', error);
+        }
+    };
 }
 
-export default new Connection();
+export default Connection;

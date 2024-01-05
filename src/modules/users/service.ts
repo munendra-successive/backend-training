@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 import { Repository } from './repository';
-import { type ILogin, type IUser, type IQueryName } from './entities';
+import { type ILogin, type IUser } from './entities';
 
 class Service {
     static generateToken(loginData: ILogin): string {
@@ -27,33 +27,5 @@ class Service {
         const result = await Repository.register(regData);
         return result;
     }
-
-    static updateByName = async (
-        oldName: string,
-        newName: string,
-    ): Promise<any> => {
-        const filter: {
-      name: string;
-    } = { name: oldName };
-        const update: {
-      $set: {
-        name: string;
-      };
-    } = { $set: { name: newName } };
-        const result = await Repository.updateRecords(filter, update);
-        return result;
-    };
-
-    static findByName = async (name: string): Promise<any> => {
-        const filter: {
-      name: string;
-    } = { name };
-        return Repository.findByField(filter);
-    };
-
-    static deleteByName = async (name: string): Promise<any> => {
-        const query: IQueryName = { name };
-        return Repository.deleteByName(query);
-    };
 }
 export default Service;

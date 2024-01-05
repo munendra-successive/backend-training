@@ -5,7 +5,6 @@ import swaggerUi from 'swagger-ui-express';
 import { Connection as ConnectionInstance } from './lib';
 import { router as userRouter } from './modules/users';
 import { router as eventRouter } from './modules/events';
-import bulkRouter from './modules/bulkupload/route';
 import swaggerSpec from './docs/swaggerConfig';
 
 import OtherMiddlewareInstance from './middlewares';
@@ -44,7 +43,6 @@ class Server {
     routes(): void {
         this.app.use('/users', userRouter);
         this.app.use('/events', eventRouter);
-        this.app.use('/bulk', bulkRouter);
         this.app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
         this.app.use('/health-check', (res: Response) => {
             res.send('Health is ok').status(200);

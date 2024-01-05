@@ -1,8 +1,9 @@
 import type mongoose from 'mongoose';
 import type IEvent from '../entities/IEvent';
-import type IQueryStatus from '../entities/IQueryStatus';
 import EventModel from './model';
 import BaseRepository from '../../../lib/base/baseRepository';
+import BulkModel from '../repositoryBulk/model';
+import BulkErrorModel from '../repositoryBulk/modelError';
 
 class Repository extends BaseRepository<IEvent> {
     private readonly eventModel: mongoose.Model<IEvent>;
@@ -12,20 +13,29 @@ class Repository extends BaseRepository<IEvent> {
         this.eventModel = EventModel;
     }
 
+    static async getByUploadId(uploadId: string) {
+        const result = await BulkErrorModel.find({ uploadId });
+        return result;
+    }
+
+    static async getAll(): Promise<any> {
+        const result = await BulkModel.find();
+        return result;
+    }
+
     async getLimit(limit: number, skip: number): Promise<any> {
         const result = await this.eventModel.find().limit(limit).skip(skip);
         return result;
     }
 
-    async deleteByStatus(status: IQueryStatus): Promise<any> {
-        const result = await this.eventModel.deleteOne(status);
-        return result;
-    }
-
     async UpdateById(eventId: string, dataToUpdate: IEvent): Promise<any> {
-        const result = await this.eventModel.findByIdAndUpdate(eventId, dataToUpdate, {
-            new: true,
-        });
+        const result = await this.eventModel.findByIdAndUpdate(
+            eventId,
+            dataToUpdate,
+            {
+                new: true,
+            },
+        );
         return result;
     }
 

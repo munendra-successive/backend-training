@@ -1,18 +1,26 @@
 import fs from 'fs';
 import csvParser from 'csv-parser';
-import { type IEvent, type IQueryStatus } from './entities';
+import { type IEvent } from './entities';
 import { Repository } from './repository';
-import BulkModel from '../bulkupload/repository/model';
+import BulkModel from './repositoryBulk/model';
+import JoiSchema from './joiSchema';
+import BulkErrorModel from './repositoryBulk/modelError';
 
 class Service {
-    static async getAll(): Promise<any> {
-        const result = await Repository.get();
+    static getByUploadId = async (uploadId: string): Promise<any> => {
+        const result = await Repository.getByUploadId(uploadId);
         return result;
-    }
+    };
 
-    static async add(eventData: IEvent): Promise<void> {
-        await Repository.insert(eventData);
-    }
+    static getAll = async (): Promise<any> => {
+        const result = await Repository.getAll();
+        return result;
+    };
+
+    // static async add(eventData: IEvent): Promise<any> {
+    // // eslint-disable-nextline no-return-await
+    //     return await Repository.insert(eventData);
+    // }
 
     static async getLimit(limit: number, skip: number): Promise<any> {
         const result = await Repository.getLimit(limit, skip);
@@ -25,37 +33,9 @@ class Service {
         return result;
     }
 
-    static async findByStatus(status: string): Promise<any> {
-        const filter: { status: string } = { status };
-        const result = await Repository.findByField(filter);
-        return result;
-    }
-
-    static async deleteByStatus(status: string): Promise<any> {
-        const query: IQueryStatus = { status };
-        const result = await Repository.deleteByStatus(query);
-        return result;
-    }
-
-    static async updateByStatus(
-        oldStatus: string,
-        newStatus: string,
-    ): Promise<any> {
-        const filter: { status: string } = { status: oldStatus };
-        const update: { $set: { status: string } } = {
-            $set: { status: newStatus },
-        };
-        const result = await Repository.updateRecords(filter, update);
-        return result;
-    }
-
     static async count(): Promise<any> {
         const result = await Repository.countRecords();
         return result;
-    }
-
-    static async deleteAll(): Promise<void> {
-        await Repository.deleteAll();
     }
 
     static async findById(_id: string): Promise<any> {
@@ -81,7 +61,10 @@ class Service {
         const { fileName, filePath } = fileInfo;
 
         const dataToInsert: any[] = [];
+        const validData: any[] = [];
+        const invalidData: any[] = [];
         const startTime: string = new Date().toLocaleString();
+        const uploadId = new Date().getTime().toString();
 
         fs.createReadStream(filePath)
             .pipe(csvParser())
@@ -108,15 +91,32 @@ class Service {
             })
             .on('end', async () => {
                 try {
-                    // Save the data to MongoDB using Repository.uploadCsv method
-                    const result: any = await Repository.uploadCsv(dataToInsert);
+                    dataToInsert.forEach((item, index) => {
+                        const { error } = JoiSchema.bulkUpload().validate(item, {
+                            abortEarly: false,
+                        });
+                        if (!error) {
+                            validData.push(item);
+                        } else {
+                            invalidData.push({
+                                rowNumber: index + 1,
+                                uploadId,
+                                errorMessage: error?.details.map((items) => items.message),
+                            });
+                        }
+                    });
+                    const result: any = await Repository.uploadCsv(validData);
+
                     // Remove the uploaded CSV file after processing
                     fs.unlinkSync(filePath);
+
+                    await BulkErrorModel.insertMany(invalidData);
 
                     const endTime: string = new Date().toLocaleString();
 
                     // Create an entry in BulkModel (if this model exists) or handle accordingly
                     await BulkModel.create({
+                        uploadId,
                         startTime,
                         endTime,
                         noOfItemsToBeInserted: dataToInsert.length,

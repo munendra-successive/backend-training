@@ -9,21 +9,6 @@ router.route('/create').post(Controller.add);
 
 router.route('/get').get(Controller.getLimit);
 
-/**
- * @swagger
- * /events/getall:
- *   get:
- *     tags:
- *       - Events API - Get All Events
- *     summary: Returns all events.
- *     description: Retrieves a list of all events.
- *     responses:
- *       '200':
- *         description: A list of events retrieved successfully.
- *       '500':
- *         description: Internal server error.
- */
-
 router.route('/getall').get(Controller.getAll);
 
 /**
@@ -52,14 +37,6 @@ router.route('/getall').get(Controller.getAll);
  */
 
 router.route('/find/:type').get(Controller.getByType);
-
-router.route('/delete/:status').delete(Controller.deleteByStatus);
-
-router.route('/update').patch(Controller.updateStatus);
-
-router.route('/count').get(Controller.countEvents);
-
-router.route('/deleteall').delete(Controller.deleteAll);
 
 /**
  * @swagger
@@ -221,6 +198,7 @@ router.route('/deleteById/:id').delete(Controller.deleteById);
  *         description: Internal server error.
  */
 
+router.route('/getByUploadId/:uploadId').get(Controller.getByUploadId);
 router.route('/upload').post(upload.single('csvFile'), Controller.uploadCsv);
 
 export default router;

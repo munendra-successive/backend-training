@@ -1,7 +1,7 @@
 import type mongoose from 'mongoose';
 import bcrypt from 'bcrypt';
 import { UserModel } from '.';
-import { type IUser, type IQueryName } from '../entities';
+import { type IUser } from '../entities';
 import { BaseRepository } from '../../../lib/index';
 
 class Repository extends BaseRepository<IUser> {
@@ -10,11 +10,6 @@ class Repository extends BaseRepository<IUser> {
     constructor() {
         super(UserModel);
         this.userModel = UserModel;
-    }
-
-    public async deleteByName(name: IQueryName): Promise<any> {
-        const result = await this.userModel.deleteOne(name);
-        return result;
     }
 
     public async register(regData: IUser): Promise<any> {
