@@ -3,13 +3,12 @@ import JoiSchema from '../schema/joiSchema';
 
 class Validation {
     static validate = (req: Request, res: Response, next: NextFunction): any => {
-        const { error } = JoiSchema.register().validate(req.body, {
-            abortEarly: false,
-        });
-        if (error) {
-            return res
-                .status(400)
-                .json({ message: 'Validation error', details: error.details });
+        try {
+            JoiSchema.register().validate(req.body, {
+                abortEarly: false,
+            });
+        } catch (error) {
+            return res.status(500).json({ message: 'Validation error' });
         }
         next();
         return undefined;

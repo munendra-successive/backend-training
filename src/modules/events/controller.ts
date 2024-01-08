@@ -4,7 +4,7 @@ import { type IEvent } from './entities';
 import { IBulkData } from './entities/IBulkData';
 
 class Controller {
-    static getByUploadId = async (req: Request, res: Response): Promise<any> => {
+    getByUploadId = async (req: Request, res: Response): Promise<any> => {
         try {
             const { uploadId } = req.params;
             const data: any = await Service.getByUploadId(uploadId);
@@ -14,27 +14,27 @@ class Controller {
         }
     };
 
-    static getAll = async (req: Request, res: Response): Promise<any> => {
+    getAll = async (req: Request, res: Response): Promise<any> => {
         try {
             const response: IBulkData = await Service.getAll();
-            return res.status(200).json({ Data: response });
+            return res.status(200).json({ data: response });
         } catch (error) {
             return res.status(500).json(error);
         }
     };
 
-    static add = async (req: Request, res: Response): Promise<any> => {
+    add = async (req: Request, res: Response): Promise<any> => {
         try {
             const eventData: IEvent = req.body;
 
             await Service.add(eventData);
             return res.status(200).json({ msg: 'Event added Successfully' });
         } catch (error) {
-            return res.status(404).json({ 'Error Occurred': error });
+            return res.status(500).json({ 'Error Occurred': error });
         }
     };
 
-    static getLimit = async (req: Request, res: Response): Promise<any> => {
+    getLimit = async (req: Request, res: Response): Promise<any> => {
         try {
             const { current, pageSize } = req.query;
 
@@ -42,67 +42,69 @@ class Controller {
             const skip: number = parseInt(current as string, 10) * parseInt(pageSize as string, 10);
             const data: any = await Service.getLimit(limit, skip);
             const datalength: number = await Service.count();
-            return res.status(200).json({ datalength, 'Data is': data });
+            return res.status(200).json({ datalength, data });
         } catch (error) {
-            return res.status(400).json({ 'Error Occured': error });
+            return res.status(500).json({ 'Error Occured': error });
         }
     };
 
-    static getByType = async (req: Request, res: Response): Promise<any> => {
+    getByType = async (req: Request, res: Response): Promise<any> => {
         try {
             const { type } = req.params;
             const event: any = await Service.findByType(type);
             if (event.length !== 0) {
-                return res.status(200).json({ 'Data is': event });
+                return res.status(200).json({ data: event });
             }
-            return res.status(400).json({ message: 'No event found' });
+            return res.status(404).json({ message: 'No event found' });
         } catch (error) {
-            return res.status(400).json({ 'Error Occured': error });
+            return res.status(500).json({ 'Error Occured': error });
         }
     };
 
-    static getById = async (req: Request, res: Response): Promise<any> => {
+    getById = async (req: Request, res: Response): Promise<any> => {
         try {
             const { id } = req.params;
 
             const event: any = await Service.findById(id);
             if (event.length !== 0) {
-                return res.status(200).json({ 'Data is': event });
+                return res.status(200).json({ data: event });
             }
-            return res.status(400).json({ message: 'No event found' });
+            return res.status(404).json({ message: 'No event found' });
         } catch (error) {
-            return res.status(400).json({ 'Error Occured': error });
+            return res.status(500).json({ 'Error Occured': error });
         }
     };
 
-    static updateById = async (req: Request, res: Response): Promise<any> => {
+    updateById = async (req: Request, res: Response): Promise<any> => {
         const eventId: string = req.params.id;
         const dataToUpdate: IEvent = req.body;
         try {
             const updatedEvent: any = await Service.UpdateById(eventId, dataToUpdate);
+            console.log('upfated event: ', updatedEvent);
+
             return res.status(200).json({ success: true, data: updatedEvent });
         } catch (error) {
             return res.status(500).json({
-                success: false,
-                message: 'Error updating event',
+                error,
             });
         }
     };
 
-    static deleteById = async (req: Request, res: Response): Promise<any> => {
+    deleteById = async (req: Request, res: Response): Promise<any> => {
         const eventId: string = req.params.id;
         try {
             const response: any = await Service.deleteById(eventId);
-            res.status(200).json({ response });
+
+            return res.status(200).json({ response });
         } catch (error) {
-            res.status(500).json({
+            return res.status(500).json({
                 success: false,
                 message: 'Error deleting event',
             });
         }
     };
 
-    static uploadCsv = async (req: Request, res: Response): Promise<any> => {
+    uploadCsv = async (req: Request, res: Response): Promise<any> => {
         try {
             const fileName: any = req.file?.originalname;
             const filePath: string | undefined = req.file?.path;
@@ -119,4 +121,4 @@ class Controller {
     };
 }
 
-export default Controller;
+export default new Controller();

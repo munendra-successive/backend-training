@@ -22,8 +22,7 @@ class Repository extends BaseRepository<IUser> {
                 ...regData,
                 password: hashPassword,
             };
-            const result = await this.userModel.create(newUser);
-            return result;
+            return await this.userModel.create(newUser);
         }
         return { message: 'User already exist' };
     }

@@ -1,8 +1,4 @@
-import {
-    type Document,
-    type FilterQuery,
-    type Model,
-} from 'mongoose';
+import { type Document, type FilterQuery, type Model } from 'mongoose';
 import type mongoose from 'mongoose';
 
 class BaseRepository<T extends Document> {
@@ -13,18 +9,15 @@ class BaseRepository<T extends Document> {
     }
 
     public async insert(data: T): Promise<any> {
-        const result = await this.model.insertMany(data);
-        return result;
+        return await this.model.insertMany(data);
     }
 
     public async countRecords(): Promise<any> {
-        const result = await this.model.countDocuments();
-        return result;
+        return await this.model.countDocuments();
     }
 
     public async findByField(filter: FilterQuery<T>): Promise<any> {
-        const result = await this.model.find(filter);
-        return result;
+        return await this.model.find(filter);
     }
 }
 

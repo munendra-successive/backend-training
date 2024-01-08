@@ -2,5 +2,5 @@ projectKey=backend-training
 serverUrl=http://localhost:9000
 serverVersion=10.3.0.82913
 dashboardUrl=http://localhost:9000/dashboard?id=backend-training
-ceTaskId=AYzY0o3jP5EhjnXSAAdp
-ceTaskUrl=http://localhost:9000/api/ce/task?id=AYzY0o3jP5EhjnXSAAdp
+ceTaskId=AYzn-fkmyJABr11zq9Pw
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AYzn-fkmyJABr11zq9Pw

@@ -7,54 +7,41 @@ import JoiSchema from './joiSchema';
 import BulkErrorModel from './repositoryBulk/modelError';
 
 class Service {
-    static getByUploadId = async (uploadId: string): Promise<any> => {
-        const result = await Repository.getByUploadId(uploadId);
-        return result;
-    };
+    getByUploadId = async (uploadId: string): Promise<any> => await Repository.getByUploadId(uploadId);
 
-    static getAll = async (): Promise<any> => {
-        const result = await Repository.getAll();
-        return result;
-    };
+    getAll = async (): Promise<any> => await Repository.getAll();
 
-    // static async add(eventData: IEvent): Promise<any> {
-    // // eslint-disable-nextline no-return-await
-    //     return await Repository.insert(eventData);
-    // }
-
-    static async getLimit(limit: number, skip: number): Promise<any> {
-        const result = await Repository.getLimit(limit, skip);
-        return result;
+    async add(eventData: IEvent): Promise<any> {
+        return await Repository.insert(eventData);
     }
 
-    static async findByType(type: string): Promise<any> {
+    async getLimit(limit: number, skip: number): Promise<any> {
+        return await Repository.getLimit(limit, skip);
+    }
+
+    async findByType(type: string): Promise<any> {
         const filter: { type: string } = { type };
-        const result = await Repository.findByField(filter);
-        return result;
+        return await Repository.findByField(filter);
     }
 
-    static async count(): Promise<any> {
-        const result = await Repository.countRecords();
-        return result;
+    async count(): Promise<any> {
+        return await Repository.countRecords();
     }
 
-    static async findById(_id: string): Promise<any> {
+    async findById(_id: string): Promise<any> {
         const filter: { _id: string } = { _id };
-        const result = await Repository.findByField(filter);
-        return result;
+        return await Repository.findByField(filter);
     }
 
-    static async UpdateById(eventId: string, dataToUpdate: IEvent): Promise<any> {
-        const result = await Repository.UpdateById(eventId, dataToUpdate);
-        return result;
+    async UpdateById(eventId: string, dataToUpdate: IEvent): Promise<any> {
+        return await Repository.UpdateById(eventId, dataToUpdate);
     }
 
-    static async deleteById(eventId: string): Promise<any> {
-        const result = await Repository.deleteById(eventId);
-        return result;
+    async deleteById(eventId: string): Promise<any> {
+        return await Repository.deleteById(eventId);
     }
 
-    static async uploadCsv(fileInfo: {
+    async uploadCsv(fileInfo: {
     fileName: string;
     filePath: string;
   }): Promise<void> {
@@ -131,4 +118,4 @@ class Service {
             });
     }
 }
-export default Service;
+export default new Service();

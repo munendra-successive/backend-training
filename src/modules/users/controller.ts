@@ -13,9 +13,9 @@ export default class Controller {
                     .status(200)
                     .json({ message: 'Login Successful', tokenIs: token });
             }
-            return res.status(404).json({ message: 'Invalid credentials' });
+            return res.status(401).json({ message: 'Invalid credentials' });
         } catch (error) {
-            return res.status(400).json({ 'Error Occured': error });
+            return res.status(500).json({ error: 'Internal server error' });
         }
     };
 
@@ -23,10 +23,10 @@ export default class Controller {
         try {
             const registerData: IUser = req.body;
             const response: any = await Service.register(registerData);
-            if (response.message) return res.status(200).json({ message: 'User already exist' });
+            if (response.message) return res.status(409).json({ message: 'User already exist' });
             return res.status(200).json({ message: 'Registered Successfully' });
         } catch (error) {
-            return res.status(400).json({ 'Error Occured': error });
+            return res.status(500).json({ 'Error Occured': error });
         }
     };
 }

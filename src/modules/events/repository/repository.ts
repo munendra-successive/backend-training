@@ -13,40 +13,30 @@ class Repository extends BaseRepository<IEvent> {
         this.eventModel = EventModel;
     }
 
-    static async getByUploadId(uploadId: string) {
-        const result = await BulkErrorModel.find({ uploadId });
-        return result;
+    async getByUploadId(uploadId: string) {
+        return await BulkErrorModel.find({ uploadId });
     }
 
-    static async getAll(): Promise<any> {
-        const result = await BulkModel.find();
-        return result;
+    async getAll(): Promise<any> {
+        return await BulkModel.find();
     }
 
     async getLimit(limit: number, skip: number): Promise<any> {
-        const result = await this.eventModel.find().limit(limit).skip(skip);
-        return result;
+        return await this.eventModel.find().limit(limit).skip(skip);
     }
 
     async UpdateById(eventId: string, dataToUpdate: IEvent): Promise<any> {
-        const result = await this.eventModel.findByIdAndUpdate(
-            eventId,
-            dataToUpdate,
-            {
-                new: true,
-            },
-        );
-        return result;
+        return await this.eventModel.findByIdAndUpdate(eventId, dataToUpdate, {
+            new: true,
+        });
     }
 
     async deleteById(eventId: string): Promise<any> {
-        const result = await this.eventModel.deleteOne({ _id: eventId });
-        return result;
+        return await this.eventModel.deleteOne({ _id: eventId });
     }
 
     async uploadCsv(data: any): Promise<any> {
-        const result = await this.eventModel.insertMany(data, { ordered: false });
-        return result;
+        return await this.eventModel.insertMany(data, { ordered: false });
     }
 }
 

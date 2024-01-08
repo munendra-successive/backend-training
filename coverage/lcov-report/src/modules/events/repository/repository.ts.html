@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">89.47% </span>
+                <span class="strong">92.3% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>17/19</span>
+                <span class='fraction'>12/13</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">89.47% </span>
+                <span class="strong">92.3% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>17/19</span>
+                <span class='fraction'>12/13</span>
             </div>
         
             
@@ -106,113 +106,89 @@
 <a name='L41'></a><a href='#L41'>41</a>
 <a name='L42'></a><a href='#L42'>42</a>
 <a name='L43'></a><a href='#L43'>43</a>
-<a name='L44'></a><a href='#L44'>44</a>
-<a name='L45'></a><a href='#L45'>45</a>
-<a name='L46'></a><a href='#L46'>46</a>
-<a name='L47'></a><a href='#L47'>47</a>
-<a name='L48'></a><a href='#L48'>48</a>
-<a name='L49'></a><a href='#L49'>49</a>
-<a name='L50'></a><a href='#L50'>50</a>
-<a name='L51'></a><a href='#L51'>51</a>
-<a name='L52'></a><a href='#L52'>52</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L44'></a><a href='#L44'>44</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import type mongoose from "mongoose";
-import type IEvent from "../entities/IEvent";
-import EventModel from "./model";
-import BaseRepository from "../../../lib/base/baseRepository";
-import BulkModel from "../repositoryBulk/model";
-import BulkErrorModel from "../repositoryBulk/modelError";
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import type mongoose from 'mongoose';
+import type IEvent from '../entities/IEvent';
+import EventModel from './model';
+import BaseRepository from '../../../lib/base/baseRepository';
+import BulkModel from '../repositoryBulk/model';
+import BulkErrorModel from '../repositoryBulk/modelError';
 &nbsp;
 class Repository extends BaseRepository&lt;IEvent&gt; {
-  private readonly eventModel: mongoose.Model&lt;IEvent&gt;;
+    private readonly eventModel: mongoose.Model&lt;IEvent&gt;;
 &nbsp;
-  constructor() {
-    super(EventModel);
-    this.eventModel = EventModel;
-  }
-  async getByUploadId(uploadId: string) {
-    const result = await BulkErrorModel.find({ uploadId: uploadId });
-    return result;
-  }
+    constructor() {
+        super(EventModel);
+        this.eventModel = EventModel;
+    }
 &nbsp;
-  async getAll(): Promise&lt;any&gt; {
-    const result = await BulkModel.find();
-    return result;
-  }
-  async getLimit(limit: number, skip: number): Promise&lt;any&gt; {
-    const result = await this.eventModel.find().limit(limit).skip(skip);
-    return result;
-  }
+    async getByUploadId(uploadId: string) {
+        return await BulkErrorModel.find({ uploadId });
+    }
 &nbsp;
-  async UpdateById(eventId: string, dataToUpdate: IEvent): Promise&lt;any&gt; {
-    const result = await this.eventModel.findByIdAndUpdate(
-      eventId,
-      dataToUpdate,
-      {
-        new: true,
-      }
-    );
-    return result;
-  }
+    async getAll(): Promise&lt;any&gt; {
+        return await BulkModel.find();
+    }
 &nbsp;
-  async deleteById(eventId: string): Promise&lt;any&gt; {
-    const result = await this.eventModel.deleteOne({ _id: eventId });
-    return result;
-  }
+    async getLimit(limit: number, skip: number): Promise&lt;any&gt; {
+        return await this.eventModel.find().limit(limit).skip(skip);
+    }
 &nbsp;
-  async <span class="fstat-no" title="function not covered" >uploadCsv(</span>data: any): Promise&lt;any&gt; {
-    const result = <span class="cstat-no" title="statement not covered" >await this.eventModel.insertMany(data, { ordered: false });</span>
-<span class="cstat-no" title="statement not covered" >    return result;</span>
-  }
+    async UpdateById(eventId: string, dataToUpdate: IEvent): Promise&lt;any&gt; {
+        return await this.eventModel.findByIdAndUpdate(eventId, dataToUpdate, {
+            new: true,
+        });
+    }
+&nbsp;
+    async deleteById(eventId: string): Promise&lt;any&gt; {
+        return await this.eventModel.deleteOne({ _id: eventId });
+    }
+&nbsp;
+    async <span class="fstat-no" title="function not covered" >uploadCsv(</span>data: any): Promise&lt;any&gt; {
+<span class="cstat-no" title="statement not covered" >        return await this.eventModel.insertMany(data, { ordered: false });</span>
+    }
 }
 &nbsp;
 export default new Repository();
@@ -223,7 +199,7 @@ export default new Repository();
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-01-05T08:51:39.543Z
+                at 2024-01-08T07:48:37.123Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>

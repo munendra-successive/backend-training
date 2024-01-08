@@ -2,16 +2,19 @@ import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 import { Repository } from './repository';
 import { type ILogin, type IUser } from './entities';
+import serverConfig from '../../config';
 
 class Service {
-    static generateToken(loginData: ILogin): string {
-        const token: string = jwt.sign(loginData, 'myNameIsMunendraKumarKushwaha', {
+    private readonly secretKey = serverConfig.jwtSecret;
+
+    generateToken(loginData: ILogin): string {
+        const token: string = jwt.sign(loginData, serverConfig.jwtSecret, {
             expiresIn: '30m',
         });
         return token;
     }
 
-    static async login(loginData: ILogin): Promise<any> {
+    async login(loginData: ILogin): Promise<any> {
         const { email, password } = loginData;
         const filter: { email: string } = { email };
         const user: any = await Repository.findByField(filter);
@@ -23,9 +26,8 @@ class Service {
         return false;
     }
 
-    static async register(regData: IUser): Promise<any> {
-        const result = await Repository.register(regData);
-        return result;
+    async register(regData: IUser): Promise<any> {
+        return await Repository.register(regData);
     }
 }
-export default Service;
+export default new Service();
